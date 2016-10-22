@@ -6,18 +6,72 @@
           <i class="ion-ios-arrow-back"></i>
         </button>
       </div>
-      <h1 class="title" ng-class="{'header-title': openMall}">Point Redemption</h1>
+      <h1 class="title" ng-class="{'header-title': openMall}">Redemption</h1>
       <h3 class="description" ng-show="!openMall">Redeem your Asia-miles</h3>
       <div class="redemption-icon" ng-show="!openMall">
         <img src="../img/asia_miles_logo.jpeg">
       </div>
       <!-- <span class="header-title" ng-show="openForm">Immigration</span> -->
       <div class="create-btn" ng-click="startShopping()" ng-class="{'return': openMall}">
-        <i class="ion-plus-round" ng-if="!openMall"></i>
-        <i class="ion-arrow-return-left" ng-if="openMall"></i>
+        <i class="ion-bag" ng-if="!openMall"></i>
+        <i class="ion-pricetags" ng-if="openMall"></i>
       </div>
     </ion-header-bar>
-  <ion-content scroll="false">
-    <div class="redemption">Redemption Page</div>
+  <ion-content class="redemption-pane">
+    <div class="redemption" ng-show="!openMall">
+      <div class="feature-container">
+        <div class="feature-grid">
+          <img src="../img/redemption_1.jpg">
+          <span class="grid-title">The Kowloon Hotel Loong Yat Heen, All-U-Can-Eat Dim Sum Brunch, 1 person (Monday – Friday)</span>
+          <span class="price">
+            <span class="asia-points">&nbsp;</span>
+            4,700
+          </span>
+        </div>
+        <div class="feature-grid">
+          <img src="../img/redemption_2.jpg">
+          <span class="grid-title">Monocozzi Motion Sports Armband for iPhone 6, Black</span>
+          <span class="price">
+            <span class="asia-points">&nbsp;</span>
+            2,610
+          </span>
+        </div>
+        <div class="feature-grid">
+          <img src="../img/redemption_3.jpg">
+          <span class="grid-title">ARTĒ Square Mini Ring</span>
+          <span class="price">
+            <span class="asia-points">&nbsp;</span>
+            11,100
+          </span>
+        </div>
+        <div class="feature-grid">
+          <img src="../img/redemption_4.jpg">
+          <span class="grid-title">HP Advanced Super HD 1440p Resolution Car Camcorder F550G</span>
+          <span class="price">
+            <span class="asia-points">&nbsp;</span>
+            23,920
+          </span>
+        </div>
+        <div class="feature-grid">
+          <img src="../img/redemption_5.jpg">
+          <span class="grid-title">The Peninsula Boutique Dark Chocolate-coated Potato Chips</span>
+          <span class="price">
+            <span class="asia-points">&nbsp;</span>
+            4,100
+          </span>
+        </div>
+        <div class="feature-grid">
+          <img src="../img/redemption_6.jpg">
+          <span class="grid-title">Peak Tram Sky Pass, 2 Adults</span>
+          <span class="price">
+            <span class="asia-points">&nbsp;</span>
+            4,100
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="redemption-mall" ng-show="openMall">
+
+    </div>
   </ion-content>
 </ion-view>
