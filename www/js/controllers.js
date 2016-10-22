@@ -351,7 +351,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('DashCtrl', function($scope, $ionicHistory) {
+.controller('DashCtrl', function($scope, $ionicHistory, $ionicTabsDelegate) {
   $scope.openChat = false;
 
   $scope.goBack = function() {
@@ -360,6 +360,10 @@ angular.module('starter.controllers', [])
   $scope.createChat = function() {
     console.log("create chat", $scope.openChat);
     $scope.openChat = !$scope.openChat;
+  }
+  
+  $scope.switchTab = function(index){
+      $ionicTabsDelegate.select(index);
   }
 })
 
