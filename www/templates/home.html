@@ -43,7 +43,7 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Password: </span>
-          <input ng-model="user.password" type="password">
+          <input ng-model="user.password" type="password" autocorrect="off" autocapitalize="off">
         </label>
         <button class="button modal-button button-dark" ng-click="login()">Login</button>
         <button class="button modal-button button-clear button-dark" ng-click="changeTo('Sign Up')">Sign Up</button>
@@ -51,11 +51,11 @@
       <div class="list" ng-show="!showLogin">
         <label class="item item-input">
           <span class="input-label">Email</span>
-          <input ng-model="newUser.email" type="text">
+          <input ng-model="newUser.email" type="text" autocorrect="off" autocapitalize="off">
         </label>
         <label class="item item-input">
           <span class="input-label">Password</span>
-          <input ng-model="newUser.password" type="password">
+          <input ng-model="newUser.password" type="password" autocorrect="off" autocapitalize="off">
         </label>
         <button class="button modal-button button-clear button-dark" ng-click="changeTo('Login')">Login</button>
         <button class="button modal-button button-dark" ng-click="signUp()">Sign Up</button>

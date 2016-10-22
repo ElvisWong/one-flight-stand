@@ -18,6 +18,7 @@ angular.module('starter.controllers', [])
   };
   $scope.showLogin = true;
   $scope.modalTitle = "Login";
+  $scope.hasLogin = true;
 
   // bluetoothSerial.available(function() {
   //   bluetoothSerial.enable(function() {
@@ -51,15 +52,15 @@ angular.module('starter.controllers', [])
     else
       $scope.showLogin = false;
   };
-  
+
   $scope.login = function() {
     console.log('$scope.login()');
     $scope.api_call = new System.login();
 
     $scope.params = $scope.user;
-    
+
     console.log($scope.params);
-      
+
     $scope.api_call.save($scope.params, function(response){
         console.log(response);
         UserService.setTokens(response.access_token);
@@ -98,21 +99,8 @@ angular.module('starter.controllers', [])
     }, function(response){
         console.log(response);
     });
-      
-/*      
-    $scope.api_call = new System.update(UserService.getTokens());
-
-    $scope.params = $scope.updateUser;
-
-    console.log($scope.params);
-    $scope.api_call.save($scope.params, function(response){
-        console.log(response);
-    }, function(response){
-        console.log(response);
-    });
-*/
   }
-    
+      
   $scope.searchBluetooth = function() {
     angular.element(document.getElementsByClassName('search-profile')).css('-webkit-animation', 'avatar 0.8s');
     $scope.isBluetoothConnected = true;
@@ -120,7 +108,20 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ImmigrationCtrl', function($scope) {})
+.controller('ImmigrationCtrl', function($scope) {
+  $scope.data = {
+    name: 'Elvis Wong',
+    flight_number_to: 'UX001',
+    flight_number_back: 'UX002',
+    local_address: 'Room 406, UG Hall V, HKUST, Clear Water Bay, Kowloon, Hong Kong',
+    foreign_address: '6127 Tudor Pl, Linden, NC, 28356',
+    origin: 'Hong Kong',
+    destination: 'USA',
+    duration: '22/10/2016-29/10/2016',
+    last_visit_country: 'Japan',
+    next_visit_country: 'USA'
+  };
+})
 
 .controller('ChatroomCtrl', function($scope) {})
 
@@ -135,3 +136,35 @@ angular.module('starter.controllers', [])
     $ionicHistory.goBack();
   };
 })
+
+.controller('DashCtrl', function($scope) {})
+
+.controller('ChatsCtrl', function($scope, Chats) {
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
+
+  $scope.chats = Chats.all();
+  $scope.remove = function(chat) {
+    Chats.remove(chat);
+  };
+})
+
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+  $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('AccountCtrl', function($scope) {
+  $scope.user = {
+    username: 'Elvis Wong',
+    jobTitle: 'JS Developer',
+    email: 'tywongao@gmail.com'
+  };
+  // $scope.settings = {
+  //   enableFriends: true
+  // };
+});
