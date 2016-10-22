@@ -46,12 +46,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
     controller: 'StarterCtrl'
   })
 
-  .state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'LoginCtrl'
-  })
-
   // Home page - check for bluetooth connection and connect to airplane
   .state('home', {
     url: '/',

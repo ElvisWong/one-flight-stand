@@ -31,25 +31,38 @@
 
 <script id="templates/modal.html" type="text/ng-template">
   <ion-modal-view>
-    <ion-header-bar class="bar bar-header bar-positive">
-      <h1 class="title">Sign Up</h1>
+    <ion-header-bar class="bar bar-header bar-light bar-transparent">
+      <h1 class="title">{{modalTitle}}</h1>
       <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
     </ion-header-bar>
     <ion-content class="padding">
-      <div class="list">
+      <div class="list" ng-show="showLogin">
+        <label class="item item-input">
+          <span class="input-label">Username/Email: </span>
+          <input ng-model="user.username" type="text" autocorrect="off" autocapitalize="off">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password: </span>
+          <input ng-model="user.password" type="password" autocorrect="off" autocapitalize="off">
+        </label>
+        <button class="button modal-button button-dark" ng-click="login(user)">Login</button>
+        <button class="button modal-button button-clear button-dark" ng-click="changeTo('Sign Up')">Sign Up</button>
+      </div>
+      <div class="list" ng-show="!showLogin">
         <label class="item item-input">
           <span class="input-label">Username</span>
-          <input ng-model="newUser.username" type="text">
+          <input ng-model="newUser.username" type="text" autocorrect="off" autocapitalize="off">
         </label>
         <label class="item item-input">
           <span class="input-label">Email</span>
-          <input ng-model="newUser.email" type="text">
+          <input ng-model="newUser.email" type="text" autocorrect="off" autocapitalize="off">
         </label>
         <label class="item item-input">
           <span class="input-label">Password</span>
-          <input ng-model="newUser.password" type="password">
+          <input ng-model="newUser.password" type="password" autocorrect="off" autocapitalize="off">
         </label>
-        <button class="button button-full button-positive" ng-click="signUp(newUser)">Sign Up</button>
+        <button class="button modal-button button-clear button-dark" ng-click="changeTo('Login')">Login</button>
+        <button class="button modal-button button-dark" ng-click="signUp(newUser)">Sign Up</button>
       </div>
     </ion-content>
   </ion-modal-view>

@@ -1,5 +1,50 @@
 <ion-view view-title="account">
   <ion-content scroll="false">
-    <div>Account Page</div>
+    <ion-header-bar align-title="left" class="bar-light">
+      <div class="buttons">
+        <button class="button" ng-click="goBack()">
+          <i class="ion-ios-arrow-back"></i>
+        </button>
+      </div>
+      <h1 class="title">Profile</h1>
+    </ion-header-bar>
+    <div class="profile list">
+      <div class="profile-cover"></div>
+      <div class="profile-container">
+        <div class="profile-image">
+          <img src="../img/adam.jpg">
+        </div>
+        <div class="profile-name">
+          <span>{{user.username}}</span>
+          <i class="ion-edit"></i>
+        </div>
+        <div class="profile-job-title">
+          <span>{{user.jobTitle}}</span>
+          <i class="ion-edit"></i>
+        </div>
+      </div>
+      <ul class="profile-list list">
+        <li class="item">
+          <span>Password: </span>
+          <span>{{user.password}}</span>
+        </li>
+        <li class="item">
+          <span>Nationality: </span>
+          <span>{{user.nationality}}</span>
+        </li>
+        <li class="item">
+          <span>Date of Birth: </span>
+          <span>{{user.date_of_birth}}</span>
+        </li>
+        <li class="item">
+          <span>Passport No.: </span>
+          <span>{{user.passport_number}}</span>
+        </li>
+        <li class="item">
+          <span>Visa No.: </span>
+          <span>{{user.visa_number}}</span>
+        </li>
+      </ul>
+    </div>
   </ion-content>
 </ion-view>

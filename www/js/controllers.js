@@ -26,6 +26,7 @@ angular.module('starter.controllers', [])
   $scope.newUser = {};
   $scope.showLogin = true;
   $scope.modalTitle = "Login";
+  $scope.hasLogin = true;
 
   // bluetoothSerial.available(function() {
   //   bluetoothSerial.enable(function() {
@@ -60,17 +61,22 @@ angular.module('starter.controllers', [])
       $scope.showLogin = false;
   }
   $scope.login = function() {
-    LoginService.loginUser($scope.user.username, $scope.user.password).success(function(data) {
-        var successPopup = $ionicPopup.alert({
-          title: 'Successful Login',
-          template: 'Welcome, ' + data.name
-        });
-      }).error(function(data) {
-          var alertPopup = $ionicPopup.alert({
-              title: 'Login failed!',
-              template: 'Please check your credentials!'
+    if (!$scope.hasLogin) {
+      LoginService.loginUser($scope.user.username, $scope.user.password).success(function(data) {
+          var successPopup = $ionicPopup.alert({
+            title: 'Successful Login',
+            template: 'Welcome, ' + data.name
           });
-      });
+        }).error(function(data) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Login failed!',
+                template: 'Please check your credentials!'
+            });
+        });
+    } else {
+      $scope.modal.hide();
+      $state.go('account');
+    }
   };
 
   $scope.signUp = function(newUser) {
@@ -85,7 +91,20 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('ImmigrationCtrl', function($scope) {})
+.controller('ImmigrationCtrl', function($scope) {
+  $scope.data = {
+    name: 'Elvis Wong',
+    flight_number_to: 'UX001',
+    flight_number_back: 'UX002',
+    local_address: 'Room 406, UG Hall V, HKUST, Clear Water Bay, Kowloon, Hong Kong',
+    foreign_address: '6127 Tudor Pl, Linden, NC, 28356',
+    origin: 'Hong Kong',
+    destination: 'USA',
+    duration: '22/10/2016-29/10/2016',
+    last_visit_country: 'Japan',
+    next_visit_country: 'USA'
+  };
+})
 
 .controller('ChatroomCtrl', function($scope) {})
 
@@ -123,7 +142,12 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+  $scope.user = {
+    username: 'Elvis Wong',
+    jobTitle: 'JS Developer',
+    email: 'tywongao@gmail.com'
   };
+  // $scope.settings = {
+  //   enableFriends: true
+  // };
 });

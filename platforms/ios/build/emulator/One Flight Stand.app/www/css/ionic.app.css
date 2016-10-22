@@ -9851,13 +9851,18 @@ a.button {
 .ionic-scroll {
   background-image: radial-gradient(rgba(250, 250, 250, 0.5), rgba(50, 50, 50, 0.5)); }
 
+.bar-transparent {
+  background-color: rgba(255, 255, 255, 0.36) !important; }
+
 .welcome-message {
   text-align: center;
   width: 223px;
   margin: 0 auto;
   position: relative;
-  top: 50px;
+  top: 40px;
   font-size: 2em;
+  line-height: 2em;
+  height: 50px;
   font-family: 'Satisfy', cursive;
   font-weight: 500;
   animation: type 1.5s steps(60, end);
@@ -9958,6 +9963,12 @@ a.button {
     -webkit-transform: scale(1.1, 1.1); }
   100% {
     -webkit-transform: scale(1, 1); } }
+
+.menu-item span {
+  text-shadow: 1px 0px 1px #969696;
+  color: #333;
+  font-style: italic;
+  font-size: 0.6em; }
 
 .menu-item i {
   font-size: 1.5em; }
@@ -10148,8 +10159,8 @@ a.button {
   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12); }
   .item-1 span {
-    top: -40px;
-    left: -5px; }
+    top: -32px;
+    left: 0px; }
 
 .item-1:hover {
   color: #669AE1;
@@ -10161,7 +10172,7 @@ a.button {
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12); }
   .item-2 span {
     top: -20px;
-    left: 2px; }
+    left: 5px; }
 
 .item-2:hover {
   color: #70CC72;
@@ -10197,7 +10208,7 @@ a.button {
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12); }
   .item-5 span {
     bottom: -20px;
-    left: 3px; }
+    left: 7px; }
 
 .item-5:hover {
   color: #FE4365;
@@ -10208,8 +10219,8 @@ a.button {
   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.14);
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12); }
   .item-6 span {
-    top: -40px;
-    left: -12px; }
+    top: -32px;
+    left: -5px; }
 
 .item-6:hover {
   color: #62C2E4;
@@ -10228,3 +10239,32 @@ a.button {
 
 .citem-3it a:hover {
   text-decoration: underline; }
+
+.modal-button {
+  margin-top: 20px;
+  width: 50%;
+  float: left; }
+
+/* Account */
+.bar {
+  position: relative; }
+
+.profile .profile-cover {
+  width: 100%;
+  display: block;
+  height: 300px;
+  background: url("../img/account_profile_cover.jpg") no-repeat left -300px;
+  background-size: cover; }
+
+.profile .profile-image {
+  width: 150px;
+  height: 150px;
+  margin-top: -80px; }
+  .profile .profile-image img {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+    border: 2px outset #aaa; }
+
+.profile .profile-list li {
+  background: transparent; }

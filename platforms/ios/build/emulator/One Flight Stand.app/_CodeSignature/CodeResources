@@ -86,7 +86,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		o/lELEW7r94HdPSqYNxzI5FzgNc=
+		ggcRQqG5qss2xbuoW7DKdV5l02U=
 		</data>
 		<key>LaunchImage-568h@2x.png</key>
 		<data>
@@ -154,11 +154,11 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		58Gl9nAbnRp00hEQZLcNFOTgtVQ=
+		gu7IAFsSDrwT4rfLGUMiMCGve4w=
 		</data>
 		<key>www/cordova-js-src/exec.js</key>
 		<data>
-		3QDPaUQrAr8Wq2XcQhqcl8DLabQ=
+		a2lLJUdS/j9A/b7Btea1O+mYXR4=
 		</data>
 		<key>www/cordova-js-src/platform.js</key>
 		<data>
@@ -166,7 +166,7 @@
 		</data>
 		<key>www/cordova.js</key>
 		<data>
-		0hjBaK04LrCYFGVi871yC9tdV4Y=
+		IED5as5d/Qha2wqCFOmkJ1CiedA=
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
@@ -174,15 +174,19 @@
 		</data>
 		<key>www/css/ionic.app.css</key>
 		<data>
-		iOy/dWxfrO9ZrJr4qVtj7aB2Qws=
+		Z0qrINNzFpKDmzRu1UVyNhNC7u8=
 		</data>
 		<key>www/css/ionic.app.min.css</key>
 		<data>
-		q573xyy+thsDONDvOfJj0SOxj34=
+		FtgTKGozGwdM5QALzUxb1Cfodtg=
 		</data>
 		<key>www/css/style.css</key>
 		<data>
 		Z/HeG0ekf2Cek4CkI05f9kNWWuc=
+		</data>
+		<key>www/img/account_profile_cover.jpg</key>
+		<data>
+		HoOw+L1S7nkDTCuWvAi6cY1Cb5w=
 		</data>
 		<key>www/img/adam.jpg</key>
 		<data>
@@ -214,11 +218,11 @@
 		</data>
 		<key>www/js/app.js</key>
 		<data>
-		U8Xk/Zg61nmF6yKEDuP+YGZRiAU=
+		/BE25/Q/syudUJ9jI8c6SgI7G+k=
 		</data>
 		<key>www/js/controllers.js</key>
 		<data>
-		HB9fxhFZaw+0yH66pl8Gove6ORE=
+		avoVurPCUDs98ruM0lTqkclB+Qo=
 		</data>
 		<key>www/js/services.js</key>
 		<data>
@@ -520,37 +524,13 @@
 		<data>
 		CXAyiqRt8jJRgA3+O4dioaXPaSs=
 		</data>
-		<key>www/plugins/cordova-plugin-console/www/console-via-logger.js</key>
-		<data>
-		NyUkntRl9vFIiOC3onmXNsxpedU=
-		</data>
-		<key>www/plugins/cordova-plugin-console/www/logger.js</key>
-		<data>
-		tmAfmQQR8NZd7y+bTWuju4/TbY0=
-		</data>
-		<key>www/plugins/cordova-plugin-device/www/device.js</key>
-		<data>
-		DgD9WKGqlbNViEZBSi4Wenbl/uM=
-		</data>
-		<key>www/plugins/cordova-plugin-splashscreen/www/splashscreen.js</key>
-		<data>
-		n2E0W8B/grOxM2ORx/haAYOWIcA=
-		</data>
-		<key>www/plugins/cordova-plugin-statusbar/www/statusbar.js</key>
-		<data>
-		hDT++3ZaOTp3t16AAFAibxtovj0=
-		</data>
-		<key>www/plugins/ionic-plugin-keyboard/www/ios/keyboard.js</key>
-		<data>
-		gexyZjGUVvhbQiJbBzCrImXWv34=
-		</data>
 		<key>www/service-worker.js</key>
 		<data>
 		7eWASE2J8GRzMLiGkSDtV9vx0Io=
 		</data>
 		<key>www/templates/account.html</key>
 		<data>
-		x3Lev0L5Ru3Pc136S/vh39vQ008=
+		17EztxlbWS4HtdJGtnHsPFFyCGw=
 		</data>
 		<key>www/templates/blackbox.html</key>
 		<data>
@@ -570,7 +550,7 @@
 		</data>
 		<key>www/templates/home.html</key>
 		<data>
-		5o8BdQvCdHEywtRM0N6Vb1r7pt0=
+		Bic9Racu79C/93tz4fLWPEmYzQ4=
 		</data>
 		<key>www/templates/immigration.html</key>
 		<data>
@@ -1000,22 +980,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			58Gl9nAbnRp00hEQZLcNFOTgtVQ=
+			gu7IAFsSDrwT4rfLGUMiMCGve4w=
 			</data>
 			<key>hash2</key>
 			<data>
-			ilbrcIey4aog+xtB2UD3ncRlWIb26jeP3MtklBh9sZ4=
+			0sWtD87tVvmXQUiX6rSUeWun+2TlnXWSHmeqSjbnbHs=
 			</data>
 		</dict>
 		<key>www/cordova-js-src/exec.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3QDPaUQrAr8Wq2XcQhqcl8DLabQ=
+			a2lLJUdS/j9A/b7Btea1O+mYXR4=
 			</data>
 			<key>hash2</key>
 			<data>
-			3k+JZ8ZeHITt5+/EQNMxMv9o6gJ7PJ7TdGiLTUKTJlU=
+			KnawqlCZrMeelcL/8fP4EKhCD+RJLPG06OqEqBTiSyQ=
 			</data>
 		</dict>
 		<key>www/cordova-js-src/platform.js</key>
@@ -1033,11 +1013,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0hjBaK04LrCYFGVi871yC9tdV4Y=
+			IED5as5d/Qha2wqCFOmkJ1CiedA=
 			</data>
 			<key>hash2</key>
 			<data>
-			49sKBESoPNoVPcQmAwufiy3R2J9tZka9ITnyDh9pM2M=
+			Rq8VdGNJRwm4FtQiwLyx1m1d6dZ5R+5sqfamR2yTaTI=
 			</data>
 		</dict>
 		<key>www/cordova_plugins.js</key>
@@ -1055,22 +1035,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iOy/dWxfrO9ZrJr4qVtj7aB2Qws=
+			Z0qrINNzFpKDmzRu1UVyNhNC7u8=
 			</data>
 			<key>hash2</key>
 			<data>
-			4wvpO2iRawWjANhuHRMC4p04MXI96R6+sXUp6uKjIZ8=
+			Sxbsi0vUJnTzQRYPo+k10H0cXja6f2PZpMjN2y1kNEQ=
 			</data>
 		</dict>
 		<key>www/css/ionic.app.min.css</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			q573xyy+thsDONDvOfJj0SOxj34=
+			FtgTKGozGwdM5QALzUxb1Cfodtg=
 			</data>
 			<key>hash2</key>
 			<data>
-			zvY1x6jcX2lxQBtxsugSOatKJSKJDWs4HgZULNEVC1A=
+			GxXClUAgwsAzoigBEi4lbScQsiZ/dFMBbku5SWSRvfI=
 			</data>
 		</dict>
 		<key>www/css/style.css</key>
@@ -1082,6 +1062,17 @@
 			<key>hash2</key>
 			<data>
 			7YkGJmu4jhT1H+2GKVRXvBVDXgpag0uArSj8sEBlnEo=
+			</data>
+		</dict>
+		<key>www/img/account_profile_cover.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HoOw+L1S7nkDTCuWvAi6cY1Cb5w=
+			</data>
+			<key>hash2</key>
+			<data>
+			sZOg2tvXbpetnIPbm1lSR1D2/sP2grV4FCmyZejwj1I=
 			</data>
 		</dict>
 		<key>www/img/adam.jpg</key>
@@ -1165,22 +1156,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			U8Xk/Zg61nmF6yKEDuP+YGZRiAU=
+			/BE25/Q/syudUJ9jI8c6SgI7G+k=
 			</data>
 			<key>hash2</key>
 			<data>
-			s84QTLGoas9Aew2DbSzvu7AWxlbAz4KmAK7zxMvwbjI=
+			yKUDhdkNLexBzWbwijf8P8d2ybyazoazUIboYKyN93s=
 			</data>
 		</dict>
 		<key>www/js/controllers.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HB9fxhFZaw+0yH66pl8Gove6ORE=
+			avoVurPCUDs98ruM0lTqkclB+Qo=
 			</data>
 			<key>hash2</key>
 			<data>
-			MdcMa31nc1bddTWy8ZQ5QE9H2046y0+hAdBG+XQpFmI=
+			p73KsFwd19TrgegVBMIIKCKZri4cAy9AhNksP1mOWSU=
 			</data>
 		</dict>
 		<key>www/js/services.js</key>
@@ -2008,72 +1999,6 @@
 			T5FjnB/fvEDMeZYEoiWwvm8dN4IOuaOEbJJgGDu6ZZw=
 			</data>
 		</dict>
-		<key>www/plugins/cordova-plugin-console/www/console-via-logger.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			NyUkntRl9vFIiOC3onmXNsxpedU=
-			</data>
-			<key>hash2</key>
-			<data>
-			cCcOHB0gfKqE6bS4NoAZMvlzcHaWDemJfOWOOw+cI/8=
-			</data>
-		</dict>
-		<key>www/plugins/cordova-plugin-console/www/logger.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			tmAfmQQR8NZd7y+bTWuju4/TbY0=
-			</data>
-			<key>hash2</key>
-			<data>
-			ESzk4H7ypO9esEfCCJl4Sw+BH3M31e0OkRdbsNe0Wcc=
-			</data>
-		</dict>
-		<key>www/plugins/cordova-plugin-device/www/device.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			DgD9WKGqlbNViEZBSi4Wenbl/uM=
-			</data>
-			<key>hash2</key>
-			<data>
-			75fkIus2+MF7kZSUTo0HFvPQWqyneMrHDoQXHcvK/fk=
-			</data>
-		</dict>
-		<key>www/plugins/cordova-plugin-splashscreen/www/splashscreen.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			n2E0W8B/grOxM2ORx/haAYOWIcA=
-			</data>
-			<key>hash2</key>
-			<data>
-			YSn19P0zRIG9MxdesT37iqYB1WqXVOFIXyjmnTn6foU=
-			</data>
-		</dict>
-		<key>www/plugins/cordova-plugin-statusbar/www/statusbar.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			hDT++3ZaOTp3t16AAFAibxtovj0=
-			</data>
-			<key>hash2</key>
-			<data>
-			JVFddhH/G0jM/7U0DOdpW1CvUNswIGcQB9WylyRtCBM=
-			</data>
-		</dict>
-		<key>www/plugins/ionic-plugin-keyboard/www/ios/keyboard.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			gexyZjGUVvhbQiJbBzCrImXWv34=
-			</data>
-			<key>hash2</key>
-			<data>
-			s8oy4VvWgJx67mjrcY9CWo7fZ0VqTuZEyLnykDMBTXs=
-			</data>
-		</dict>
 		<key>www/service-worker.js</key>
 		<dict>
 			<key>hash</key>
@@ -2089,11 +2014,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			x3Lev0L5Ru3Pc136S/vh39vQ008=
+			17EztxlbWS4HtdJGtnHsPFFyCGw=
 			</data>
 			<key>hash2</key>
 			<data>
-			g6Jrx/9FijboC9cOosZ7vwbZMJQITyeDLzUnl/BsHEI=
+			tujpxFU+AjLtX617kfXk8pepPbHUOlFM4GwPxpJ9Vys=
 			</data>
 		</dict>
 		<key>www/templates/blackbox.html</key>
@@ -2144,11 +2069,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5o8BdQvCdHEywtRM0N6Vb1r7pt0=
+			Bic9Racu79C/93tz4fLWPEmYzQ4=
 			</data>
 			<key>hash2</key>
 			<data>
-			OFMt9LiqXPNokYWCW7/7zxsLqLekBUxuIW7TVBVtIY4=
+			Je8D0dQwPg4kIJcNDrL9tpNxhhQvtCDSDTd7He+FF/c=
 			</data>
 		</dict>
 		<key>www/templates/immigration.html</key>
