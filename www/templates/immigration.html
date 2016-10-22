@@ -1,5 +1,65 @@
 <ion-view view-title="immigration">
   <ion-content scroll="false">
-    <div>Immigration Page</div>
+    <ion-header-bar align-title="left" class="bar immigration-header-bar" ng-class="{'closePanel': openForm}">
+      <div class="buttons">
+        <button class="button" ng-click="goBack()">
+          <i class="ion-ios-arrow-back"></i>
+        </button>
+      </div>
+      <h1 class="title" ng-class="{'header-title': openForm}">Immigration</h1>
+      <h3 class="description" ng-show="!openForm">Create your arrival card</h3>
+      <div class="immigration-icon" ng-show="!openForm">
+        <img src="../img/passport_copy.png">
+      </div>
+      <!-- <span class="header-title" ng-show="openForm">Immigration</span> -->
+      <div class="create-btn" ng-click="createForm()" ng-class="{'return': openForm}">
+        <i class="ion-plus-round" ng-if="!openForm"></i>
+        <i class="ion-arrow-return-left" ng-if="openForm"></i>
+      </div>
+    </ion-header-bar>
+    <div class="immigration-record list" ng-show="!openForm">
+      <a class="item item-avatar" href="#" ng-click="openQRCode(1)">
+        <img src="../img/flags/48/Japan.png">
+        <h2>Cathay Pacific : UX 001</h2>
+        <p>Japan Immigration - 10/9/2016</p>
+      </a>
+      <a class="item item-avatar" href="#" ng-click="openQRCode(2)">
+        <img src="../img/flags/48/Thailand.png">
+        <h2>Cathay Pacific : UX 002</h2>
+        <p>Thailand Immigration - 21/8/2016</p>
+      </a>
+      <a class="item item-avatar" href="#" ng-click="openQRCode(3)">
+        <img src="../img/flags/48/Poland.png">
+        <h2>Cathay Pacific : UX 003</h2>
+        <p>Poland Immigration - 03/2/2016</p>
+      </a>
+    </div>
+    <div class="immigration" ng-show="openForm">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Full Name:</span>
+          <input type="text" placeholder="{{data.user_info.name}}" ng-model="data.user_info.name">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Nationality:</span>
+          <input type="text" placeholder="{{data.user_info.nationality}}" ng-model="data.user_info.nationality">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Date of Birth:</span>
+          <input type="text" placeholder="{{data.user_info.date_of_birth}}" ng-model="data.user_info.date_of_birth">
+        </label>
+        <button class="button button-block button-outline button-dark" ng-class="{'disable': checkFinished()}" ng-click="submitForm()">Submit Immigration Paper</button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
+
+<script id="templates/modal.html" type="text/ng-template">
+  <ion-modal-view style="width: 80%; height: 80%; margin: auto; left: 10%; top: 10%;">
+    <ion-content class="padding">
+      <div class="qr-code">
+        Hello QR Code
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
