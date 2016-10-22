@@ -37,13 +37,6 @@ angular.module('starter.controllers', [])
   $scope.modalTitle = "Login";
   $scope.hasLogin = true;
     
-  $scope.qrcode_string = 'www.acesobee.com';
-  $scope.size = 150;
-  $scope.correctionLevel = '';
-  $scope.typeNumber = 0;
-  $scope.inputMode = '';
-  $scope.image = true;
-
   // bluetoothSerial.available(function() {
   //   bluetoothSerial.enable(function() {
   //     bluetoothSerial.connect('', function() {
@@ -149,6 +142,12 @@ angular.module('starter.controllers', [])
     "next_visit_country": null
   };
   $scope.openForm = false;
+  $scope.qrcode_string = 'www.acesobee.com';
+  $scope.size = 150;
+  $scope.correctionLevel = '';
+  $scope.typeNumber = 0;
+  $scope.inputMode = '';
+  $scope.image = true;
 
   $scope.init = function () {
       $scope.setTrip();
