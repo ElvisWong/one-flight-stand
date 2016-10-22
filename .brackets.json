@@ -1,0 +1,12 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/platforms/ios/build/emulator/One Night Stand.app/www/plugins/ionic-plugin-keyboard/www/ios/keyboard.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/platforms/ios/build/emulator/One Night Stand.app/www/plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/platforms/ios/platform_www/cordova_plugins.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/platforms/ios/platform_www/plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/platforms/ios/www/cordova_plugins.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/platforms/ios/www/js/app.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/platforms/ios/www/js/controllers.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/www/service-worker.js"
+    ]
+}
