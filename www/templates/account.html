@@ -15,19 +15,15 @@
           <img src="../img/adam.jpg">
         </div>
         <div class="profile-name">
-          <span>{{user.username}}</span>
+          <span>{{user.name}}</span>
           <i class="ion-edit"></i>
         </div>
-        <div class="profile-job-title">
+        <div class="profile-job-title" ng-if="user.jobTitle">
           <span>{{user.jobTitle}}</span>
           <i class="ion-edit"></i>
         </div>
       </div>
       <ul class="profile-list list">
-        <li class="item">
-          <span>Password: </span>
-          <span>{{user.password}}</span>
-        </li>
         <li class="item">
           <span>Nationality: </span>
           <span>{{user.nationality}}</span>

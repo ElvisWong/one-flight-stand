@@ -10044,6 +10044,17 @@ a.button {
   text-align: center;
   box-sizing: border-box;
   font-size: 26px; }
+  .radial-menu .profile-icon {
+    position: absolute;
+    z-index: 2;
+    border: 2px outset rgba(50, 50, 50, 0.5);
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%; }
+    .radial-menu .profile-icon img {
+      width: 100%;
+      height: auto; }
 
 .menu-item:hover {
   background: #EEEEEE;
@@ -10260,12 +10271,14 @@ a.button {
   background: rgba(200, 200, 200, 0.7);
   width: 100%;
   height: auto;
+  min-height: 75px;
   padding-left: 20px;
   margin-top: -75px;
   font-family: helvetica, arial, sans-serif; }
   .profile .profile-container .profile-image {
     width: 100px;
     height: 100px;
+    right: 20px;
     position: relative;
     float: right;
     margin-top: -50px; }
@@ -10397,8 +10410,14 @@ a.button {
       color: rgba(85, 85, 85, 0.5);
       border: 1px solid rgba(68, 68, 68, 0.5); }
 
-.qr-code {
-  width: 200px;
-  height: 200px;
+.qr-code-modal {
+  background: rgba(155, 155, 155, 0.5);
+  width: 80%;
   position: relative;
-  margin: 0 auto; }
+  margin: 50px auto 0;
+  border: 5px;
+  height: 360px; }
+  .qr-code-modal .qr-code {
+    padding: 0px 15px;
+    position: relative;
+    margin: 0 auto; }
