@@ -1,17 +1,36 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
-    <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-    <p>
-      For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
-    </p>
+<!-- <ion-header-bar align-title="center" class="bar bar-balanced bar-chatroom">
+  <div class="buttons">
+    <button class="button button-clear" ng-click="goBack()"><i class="ion-ios-arrow-left"></i></button>
+  </div>
+  <h1 class="title">Chatroom</h1>
+</ion-header-bar> -->
+
+<ion-view view-title="tab-dash">
+  <ion-content>
+    <ion-header-bar align-title="left" class="bar chatroom-header-bar" ng-class="{'closePanel': openChat}">
+      <div class="buttons">
+        <button class="button" ng-click="goBack()">
+          <i class="ion-ios-arrow-back"></i>
+        </button>
+      </div>
+      <h1 class="title" ng-class="{'header-title': openChat}">Chatroom</h1>
+      <h3 class="description" ng-show="!openChat">Chat within this flight</h3>
+      <div class="chatroom-icon" ng-show="!openChat">
+        <img src="../img/chatroom_icon.png">
+      </div>
+      <!-- <span class="header-title" ng-show="openForm">Immigration</span> -->
+      <div class="create-btn" ng-click="createChat()" ng-class="{'return': openChat}">
+        <i class="ion-plus-round" ng-if="!openChat"></i>
+        <i class="ion-arrow-return-left" ng-if="openChat"></i>
+      </div>
+    </ion-header-bar>
+    <div class="list chatroom-dashboard">
+      <a class="item item-avatar" href="#" ng-click="viewChat(1)">
+        <img src="../img/group_icon.png">
+        <h2>Flight Group</h2>
+        <p>Last Message Here</p>
+        <i class="ion-chevron-right"></i>
+      </a>
+    </div>
   </ion-content>
 </ion-view>
