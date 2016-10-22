@@ -8,8 +8,10 @@ angular.module('starter.services', [])
         register: function () {
             return $resource('http://cathay-pacific-146715.appspot.com/api/v1/users');
         },
-        update: function () {
-            return $resource('http://cathay-pacific-146715.appspot.com/api/v1/users');
+        update: function (tokens) {
+            return $resource('http://cathay-pacific-146715.appspot.com/api/v1/users', {}, 
+                {headers: { 'X-WALKER-ACCESS-TOKEN': tokens }}
+            );
         }
     }
 })

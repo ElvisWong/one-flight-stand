@@ -1,20 +1,20 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope, $state, $ionicModal, System, UserService, $ionicPopup) {
+.controller('HomeCtrl', function($scope, $state, $ionicModal, System, UserService, $ionicPopup, $http) {
   // variables
   $scope.isBluetoothConnected = false;
   $scope.isMenuOpen = false;
   $scope.user = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
   $scope.newUser = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
   $scope.updateUser = {
-      'firstname': null,
-      'lastname': null,
+      'firstname': 'CY',
+      'lastname': 'Kwong',
       'nationality': null,
       'date_of_birth': null,
       'passport_number': null,
       'visa_number': null,
       'gender': null,
-      'address': null,
+      'address': 'Hong Kong'
   };
   $scope.showLogin = true;
   $scope.modalTitle = "Login";
@@ -83,17 +83,25 @@ angular.module('starter.controllers', [])
     });
   };
 
-/*
-    $scope.update = function () {
-    $scope.api_call = new System.update();
+  $scope.update = function () {
+    var params = {
+        method: 'PUT',
+        url: 'http://cathay-pacific-146715.appspot.com/api/v1/users',
+        headers: {
+            'X-WALKER-ACCESS-TOKEN': UserService.getTokens()
+        },
+        data: $scope.updateUser
+    }
 
-    $scope.params = $scope.updateUser;
-
-    $scope.api_call.save($scope.params, function(response){
+    console.log($scope.params);
+      
+    $http(params).then(function(response){
+        console.log(response);
+    }, function(response){
         console.log(response);
     });
   }
-*/
+      
   $scope.searchBluetooth = function() {
     angular.element(document.getElementsByClassName('search-profile')).css('-webkit-animation', 'avatar 0.8s');
     $scope.isBluetoothConnected = true;
