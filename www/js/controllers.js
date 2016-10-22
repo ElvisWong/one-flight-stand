@@ -52,39 +52,20 @@ angular.module('starter.controllers', [])
     else
       $scope.showLogin = false;
   };
-  
+
   $scope.login = function() {
-<<<<<<< HEAD
-    if (!$scope.hasLogin) {
-      LoginService.loginUser($scope.user.username, $scope.user.password).success(function(data) {
-          var successPopup = $ionicPopup.alert({
-            title: 'Successful Login',
-            template: 'Welcome, ' + data.name
-          });
-        }).error(function(data) {
-            var alertPopup = $ionicPopup.alert({
-                title: 'Login failed!',
-                template: 'Please check your credentials!'
-            });
-        });
-    } else {
-      $scope.modal.hide();
-      $state.go('account');
-    }
-=======
     console.log('$scope.login()');
     $scope.api_call = new System.login();
 
     $scope.params = $scope.user;
-    
+
     console.log($scope.params);
-      
+
     $scope.api_call.save($scope.params, function(response){
         console.log(response);
         UserService.setTokens(response.access_token);
         $scope.modal.hide();
     });
->>>>>>> 8f7928acf7379c1f209cbef4774cb4953fc630de
   };
 
   $scope.signUp = function() {
@@ -111,7 +92,7 @@ angular.module('starter.controllers', [])
         console.log(response);
     });
   }
-*/    
+*/
   $scope.searchBluetooth = function() {
     angular.element(document.getElementsByClassName('search-profile')).css('-webkit-animation', 'avatar 0.8s');
     $scope.isBluetoothConnected = true;
@@ -147,7 +128,6 @@ angular.module('starter.controllers', [])
     $ionicHistory.goBack();
   };
 })
-<<<<<<< HEAD
 
 .controller('DashCtrl', function($scope) {})
 
@@ -180,5 +160,3 @@ angular.module('starter.controllers', [])
   //   enableFriends: true
   // };
 });
-=======
->>>>>>> 8f7928acf7379c1f209cbef4774cb4953fc630de

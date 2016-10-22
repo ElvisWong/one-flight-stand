@@ -10,18 +10,20 @@
     </ion-header-bar>
     <div class="profile list">
       <div class="profile-cover"></div>
-      <div class="profile-image">
-        <img src="../img/adam.jpg">
+      <div class="profile-container">
+        <div class="profile-image">
+          <img src="../img/adam.jpg">
+        </div>
+        <div class="profile-name">
+          <span>{{user.username}}</span>
+          <i class="ion-edit"></i>
+        </div>
+        <div class="profile-job-title">
+          <span>{{user.jobTitle}}</span>
+          <i class="ion-edit"></i>
+        </div>
       </div>
       <ul class="profile-list list">
-        <li class="item">
-          <span>Username: </span>
-          <span>{{user.username}}</span>
-        </li>
-        <li class="item">
-          <span>Email: </span>
-          <span>{{user.email}}</span>
-        </li>
         <li class="item">
           <span>Password: </span>
           <span>{{user.password}}</span>

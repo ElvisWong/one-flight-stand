@@ -1,29 +1,21 @@
 angular.module('starter.controllers', [])
 
-.controller('StarterCtrl', function($scope) {
-
-})
-
-.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
-
-  $scope.login = function() {
-    LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-          $state.go('home');
-      }).error(function(data) {
-          var alertPopup = $ionicPopup.alert({
-              title: 'Login failed!',
-              template: 'Please check your credentials!'
-          });
-      });
-  }
-})
-
-.controller('HomeCtrl', function($scope, $state, $ionicModal, LoginService, $ionicPopup) {
+.controller('HomeCtrl', function($scope, $state, $ionicModal, System, UserService, $ionicPopup) {
   // variables
   $scope.isBluetoothConnected = false;
   $scope.isMenuOpen = false;
-  $scope.user = {username: 'Elvis Wong'};
-  $scope.newUser = {};
+  $scope.user = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
+  $scope.newUser = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
+  $scope.updateUser = {
+      'firstname': null,
+      'lastname': null,
+      'nationality': null,
+      'date_of_birth': null,
+      'passport_number': null,
+      'visa_number': null,
+      'gender': null,
+      'address': null,
+  };
   $scope.showLogin = true;
   $scope.modalTitle = "Login";
   $scope.hasLogin = true;
@@ -59,36 +51,53 @@ angular.module('starter.controllers', [])
       $scope.showLogin = true;
     else
       $scope.showLogin = false;
-  }
+  };
+
   $scope.login = function() {
-    if (!$scope.hasLogin) {
-      LoginService.loginUser($scope.user.username, $scope.user.password).success(function(data) {
-          var successPopup = $ionicPopup.alert({
-            title: 'Successful Login',
-            template: 'Welcome, ' + data.name
-          });
-        }).error(function(data) {
-            var alertPopup = $ionicPopup.alert({
-                title: 'Login failed!',
-                template: 'Please check your credentials!'
-            });
-        });
-    } else {
-      $scope.modal.hide();
-      $state.go('account');
-    }
+    console.log('$scope.login()');
+    $scope.api_call = new System.login();
+
+    $scope.params = $scope.user;
+
+    console.log($scope.params);
+
+    $scope.api_call.save($scope.params, function(response){
+        console.log(response);
+        UserService.setTokens(response.access_token);
+        $scope.modal.hide();
+    });
   };
 
-  $scope.signUp = function(newUser) {
-    $scope.newUser = newUser;
-    $scope.modal.hide();
+  $scope.signUp = function() {
+    console.log('$scope.signup()');
+    $scope.api_call = new System.register();
+
+    $scope.params = $scope.newUser;
+
+    $scope.api_call.save($scope.params, function(response){
+        console.log(response);
+        UserService.setTokens(response.access_token);
+        $scope.user = $scope.newUser;
+        $scope.login();
+    });
   };
 
+/*
+    $scope.update = function () {
+    $scope.api_call = new System.update();
+
+    $scope.params = $scope.updateUser;
+
+    $scope.api_call.save($scope.params, function(response){
+        console.log(response);
+    });
+  }
+*/
   $scope.searchBluetooth = function() {
     angular.element(document.getElementsByClassName('search-profile')).css('-webkit-animation', 'avatar 0.8s');
     $scope.isBluetoothConnected = true;
 
-  }
+  };
 })
 
 .controller('ImmigrationCtrl', function($scope) {
@@ -142,6 +151,11 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
+  $scope.user = {
+    username: 'Elvis Wong',
+    jobTitle: 'JS Developer',
+    email: 'tywongao@gmail.com'
+  };
   // $scope.settings = {
   //   enableFriends: true
   // };
