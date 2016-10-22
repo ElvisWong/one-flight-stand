@@ -113,7 +113,7 @@ angular.module('starter.controllers', [])
     "user_info": null,
     "create_time": "2016-10-22T10:09:27.500785",
     "from_date": null,
-    "destination": null,
+    "destination": 'TH',
     "to_date": null,
     "owner": 5629499534213120,
     "uid": 5891733057437696,
@@ -124,7 +124,7 @@ angular.module('starter.controllers', [])
   $scope.openForm = false;
   $scope.isLoading = false;
   $scope.qrcode_string = 'www.acesobee.com';
-  $scope.size = 300;
+  $scope.size = 250;
   $scope.correctionLevel = '';
   $scope.typeNumber = 0;
   $scope.inputMode = '';
@@ -214,7 +214,29 @@ angular.module('starter.controllers', [])
   }
   
   $scope.getTrip = function (data) {
-    $scope.qrcode_string = 'http://cathay-pacific-146715.appspot.com/trips/' + data.uid + '?access_token=' + data.access_token;
+    $scope.temp_string = 'http://cathay-pacific-146715.appspot.com/trips/' + data.uid + '?access_token=' + data.access_token;
+      
+    var params = {
+        method: 'POST',
+        url: 'https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyC4fJd2cD8r4sQfTh8CccyzyoFXDT80glg',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: {
+            'longUrl': $scope.temp_string
+        }
+    }
+
+    console.log(params);
+      
+    $http(params).then(function(response){
+        console.log(response);
+        $scope.qrcode_string = response.data.id;
+    }, function(response){
+        console.log(response);
+    });
+      
+    //$scope.qrcode_string = 'http://cathay-pacific-146715.appspot.com/trips/' + data.uid + '?access_token=' + data.access_token;
     $scope.openQRCode();
 /*    
     var params = {
@@ -234,6 +256,10 @@ angular.module('starter.controllers', [])
     });
 */    
   };
+    
+  $scope.openQRCodeLink = function () {
+      window.open($scope.qrcode_string);
+  }
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
     scope: $scope,
@@ -245,6 +271,10 @@ angular.module('starter.controllers', [])
   $scope.openQRCode = function() {
     $scope.modal.show();
   };
+    
+  $scope.closeQRCode = function () {
+    $scope.modal.hide();
+  }
 
   $scope.checkFinished = function() {
     for(var key in $scope.data) {

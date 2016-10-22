@@ -22,7 +22,7 @@
         <img src="../img/flags/48/Japan.png">
         <h2>UID : {{data.uid}}</h2>
         <p>Create Time : {{data.create_time}}</p>
-        <p>Japan Immigration - 10/9/2016</p>
+        <p>{{data.destination}} Immigration - 10/9/2016</p>
       </a>
       <a ng-hide="trip_list_data.length > 0 || isLoading" class="item item-avatar" href="#">
         <img src="../img/icon.png">
@@ -69,10 +69,10 @@
   <ion-modal-view class="qr-code-modal">
     <ion-header-bar class="bar bar-header bar-light">
       <h1 class="title">Immigration Record</h1>
-      <button class="button button-clear button-primary" ng-click="modal.hide()"><i class="ion-close-round"></i></button>
+      <button class="button button-clear button-primary" ng-click="closeQRCode()"><i class="ion-close-round"></i></button>
     </ion-header-bar>
     <ion-content>
-      <div class="qr-code">
+      <div class="qr-code" ng-click="openQRCodeLink()">
         <qr text="qrcode_string" type-number="typeNumber" correction-level="correctionLevel" size="size" input-mode="inputMode" image="image"></qr>
       </div>
     </ion-content>
