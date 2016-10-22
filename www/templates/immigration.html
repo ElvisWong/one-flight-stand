@@ -12,7 +12,7 @@
         <img src="../img/passport_copy.png">
       </div>
       <!-- <span class="header-title" ng-show="openForm">Immigration</span> -->
-      <div class="create-btn" ng-click="setTrip()" ng-class="{'return': openForm}">
+      <div class="create-btn" ng-click="openForm = !openForm" ng-class="{'return': openForm}">
         <i class="ion-plus-round" ng-if="!openForm"></i>
         <i class="ion-arrow-return-left" ng-if="openForm"></i>
       </div>
@@ -67,45 +67,49 @@
           <span class="input-label">Visa Number:</span>
           <input type="text" placeholder="{{data.user_info.visa_number || 'Visa Number'}}" ng-model="data.user_info.visa_number">
         </label>
+<!--
         <label class="item item-input item-floating-label">
           <span class="input-label">Gender:</span>
           <input type="text" placeholder="{{data.user_info.gender || 'Gender'}}" ng-model="data.user_info.gender">
         </label>
+-->
+<!--
         <label class="item item-input item-floating-label">
           <span class="input-label">Address:</span>
           <input type="text" placeholder="{{data.user_info.address || 'Address'}}" ng-model="data.user_info.address">
         </label>
+-->
         <label class="item item-input item-floating-label">
           <span class="input-label">Flight Number To:</span>
-          <input type="text" placeholder="{{data.user_info.flight_number_to || 'Flight Number To'}}" ng-model="data.user_info.flight_number_to">
+          <input type="text" placeholder="{{data.flight_number_to || 'Flight Number To'}}" ng-model="data.flight_number_to">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Foreign Address:</span>
-          <input type="text" placeholder="{{data.user_info.foreign_address || 'Foreign Address'}}" ng-model="data.user_info.foreign_address">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">From date:</span>
-          <input type="text" placeholder="{{data.user_info.from_date || 'From Date'}}" ng-model="data.user_info.from_date">
+          <input type="text" placeholder="{{data.foreign_address || 'Foreign Address'}}" ng-model="data.foreign_address">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Destination:</span>
-          <input type="text" placeholder="{{data.user_info.destination || 'Destination'}}" ng-model="data.user_info.destination">
+          <input type="text" placeholder="{{data.destination || 'Destination'}}" ng-model="data.destination">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">From date:</span>
+          <input type="text" placeholder="{{data.from_date || 'From Date'}}" ng-model="data.from_date">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">To Date:</span>
-          <input type="text" placeholder="{{data.user_info.to_date || 'To Date'}}" ng-model="data.user_info.to_date">
+          <input type="text" placeholder="{{data.to_date || 'To Date'}}" ng-model="data.to_date">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Flight Number Back:</span>
-          <input type="text" placeholder="{{data.user_info.flight_number_back || 'Flight Number Back'}}" ng-model="data.user_info.flight_number_back">
+          <input type="text" placeholder="{{data.flight_number_back || 'Flight Number Back'}}" ng-model="data.flight_number_back">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Last Visit Country:</span>
-          <input type="text" placeholder="{{data.user_info.last_visit_country || 'Last Visit Country'}}" ng-model="data.user_info.last_visit_country">
+          <input type="text" placeholder="{{data.last_visit_country || 'Last Visit Country'}}" ng-model="data.last_visit_country">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Next Visit Country:</span>
-          <input type="text" placeholder="{{data.user_info.next_visit_country || 'Next Visit Country'}}" ng-model="data.user_info.next_visit_country">
+          <input type="text" placeholder="{{data.next_visit_country || 'Next Visit Country'}}" ng-model="data.next_visit_country">
         </label>
         <button class="button button-block button-outline button-dark" ng-class="{'disable': checkFinished()}" ng-click="submitForm()">Submit Immigration Paper</button>
       </div>

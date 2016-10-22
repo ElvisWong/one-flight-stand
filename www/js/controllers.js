@@ -105,21 +105,26 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ImmigrationCtrl', function($scope, TripService, UserService, System, $http, $ionicHistory, $ionicPopup, $ionicModal) {
+  $from_date = new Date("2016-11-10 12:00:00");
+  $to_date = new Date("2016-11-11 23:00:00");
+  $from_date = $from_date.getTime() / 1000;
+  $to_date = $to_date.getTime() / 1000;
+  
   $scope.data = {
     "access_token": null,
-    "flight_number_to": null,
-    "foreign_address": null,
+    "flight_number_to": 'CX121',
+    "foreign_address": 'Thailand',
     "update_time": "2016-10-22T10:09:27.500811",
-    "user_info": null,
+    "user_info": UserService.getUser(),
     "create_time": "2016-10-22T10:09:27.500785",
-    "from_date": null,
     "destination": 'TH',
-    "to_date": null,
+    "from_date": $from_date,
+    "to_date": $to_date,
     "owner": 5629499534213120,
     "uid": 5891733057437696,
-    "flight_number_back": null,
-    "last_visit_country": null,
-    "next_visit_country": null
+    "flight_number_back": 'CX123',
+    "last_visit_country": 'HK',
+    "next_visit_country": 'TH'
   };
   $scope.openForm = false;
   $scope.isLoading = false;
@@ -146,7 +151,7 @@ angular.module('starter.controllers', [])
       
     $scope.trip = $scope.data;
     if($scope.isLogin){
-        $scope.trip.user_info = UserService.getUser();
+        //$scope.trip.user_info = UserService.getUser();
 
         var params = {
             method: 'POST',
@@ -180,6 +185,8 @@ angular.module('starter.controllers', [])
             $scope.trip_list_data.push(response.data);
         System.hideLoading();
         $scope.isLoading = false;
+        $scope.openForm = false;
+        $ionicHistory.goBack();
     }, function(response){
         console.log(response);
     });
@@ -292,7 +299,7 @@ angular.module('starter.controllers', [])
   };
 
   $scope.submitForm = function() {
-
+      $scope.setTrip();
   }
 
   $scope.goBack = function() {
