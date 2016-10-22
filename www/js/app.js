@@ -5,12 +5,20 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $timeout, $cordovaDialogs) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    $timeout(function() {
+      bluetoothSerial.isEnabled(function() {
+        $cordovaDialogs.alert("Bluetooth LE is enabled", "Bluetooth LE", "GREAT!");
+      }, function() {
+         $cordovaDialogs.alert("Bluetooth LE is NOT enabled", "Bluetooth LE", "Oops!");
+      });
+    }, 750);
+
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -23,13 +31,69 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
+
+  // Starter page
+  .state('starter', {
+    url: '/starter',
+    templateUrl: 'templates/starter.html',
+    controller: 'StarterCtrl'
+  })
+
+  // Home page - check for bluetooth connection and connect to airplane
+  .state('home', {
+    url: '/',
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
+  })
+
+  .state('account', {
+    url: '/account',
+    templateUrl: 'templates/account.html',
+    controller: 'AccountCtrl'
+  })
+
+  .state('immigration', {
+    url: '/immigration',
+    templateUrl: 'templates/immigration.html',
+    controller: 'ImmigrationCtrl'
+  })
+
+  .state('chatroom', {
+    url: '/chatroom',
+    templateUrl: 'templates/chatroom.html',
+    controller: 'ChatroomCtrl'
+  })
+
+  .state('catering', {
+    url: '/catering',
+    templateUrl: 'templates/catering.html',
+    controller: 'CateringCtrl'
+  })
+
+  .state('notification', {
+    url: '/notification',
+    templateUrl: 'templates/notification.html',
+    controller: 'NotificationCtrl'
+  })
+
+  .state('blackbox', {
+    url: '/blackbox',
+    templateUrl: 'templates/blackbox.html',
+    controller: 'BlackboxCtrl'
+  })
+
+  .state('redemption', {
+    url: '/redemption',
+    templateUrl: 'templates/redemption.html',
+    controller: 'RedemptionCtrl'
+  })
 
   // setup an abstract state for the tabs directive
     .state('tab', {
@@ -80,6 +144,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/');
+
+  $locationProvider.html5Mode(true);
 
 });

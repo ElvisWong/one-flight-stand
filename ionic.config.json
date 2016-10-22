@@ -1,6 +1,6 @@
 {
-  "name": "one_night_stand",
-  "app_id": "80ca3c2f",
+  "name": "one_flight_stand",
+  "app_id": "ba36b257",
   "gulpStartupTasks": [
     "sass",
     "watch"

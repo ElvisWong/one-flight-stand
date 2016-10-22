@@ -1,7 +1,7 @@
 {
-  "name": "one_night_stand",
+  "name": "one_flight_stand",
   "version": "1.1.1",
-  "description": "one_night_stand: An Ionic project",
+  "description": "one_flight_stand: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
