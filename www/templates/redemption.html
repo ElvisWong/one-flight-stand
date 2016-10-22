@@ -1,13 +1,23 @@
 <ion-view view-title="redemption">
-  <ion-header-bar align-title="left" class="bar-light">
-    <div class="buttons">
-      <button class="button" ng-click="goBack()">
-        <i class="ion-ios-arrow-back"></i>
-      </button>
-    </div>
-    <h1 class="title">Point Redemption</h1>
-  </ion-header-bar>
   <ion-content scroll="false">
-    <div>Redemption Page</div>
+    <ion-header-bar align-title="left" class="bar redemption-header-bar" ng-class="{'closePanel': openMall}">
+      <div class="buttons">
+        <button class="button" ng-click="goBack()">
+          <i class="ion-ios-arrow-back"></i>
+        </button>
+      </div>
+      <h1 class="title" ng-class="{'header-title': openMall}">Point Redemption</h1>
+      <h3 class="description" ng-show="!openMall">Redeem your Asia-miles</h3>
+      <div class="redemption-icon" ng-show="!openMall">
+        <img src="../img/asia_miles_logo.jpeg">
+      </div>
+      <!-- <span class="header-title" ng-show="openForm">Immigration</span> -->
+      <div class="create-btn" ng-click="startShopping()" ng-class="{'return': openMall}">
+        <i class="ion-plus-round" ng-if="!openMall"></i>
+        <i class="ion-arrow-return-left" ng-if="openMall"></i>
+      </div>
+    </ion-header-bar>
+  <ion-content scroll="false">
+    <div class="redemption">Redemption Page</div>
   </ion-content>
 </ion-view>

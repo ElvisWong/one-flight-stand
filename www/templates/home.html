@@ -1,7 +1,7 @@
 <ion-view view-title="home">
   <ion-content scroll="false">
-    <div class="welcome-message" ng-if="user.username!==undefined && isBluetoothConnected">
-      <span>Welcome, {{user.username}}</span>
+    <div class="welcome-message" ng-if="currentUser.name!==undefined && isBluetoothConnected">
+      <span>Welcome, {{currentUser.name}}</span>
     </div>
     <div class="search-body" ng-if="!isBluetoothConnected">
       <div class="search-pings">
@@ -14,7 +14,8 @@
     <div class="radial-menu-container">
       <nav class="radial-menu" ng-if="isBluetoothConnected">
         <input type="checkbox" ng-model="isMenuOpen" href="#" class="menu-open" name="menu-open" id="menu-open" />
-        <label class="menu-open-button" for="menu-open"> <span class="lines line-1"></span> <span class="lines line-2"></span> <span class="lines line-3"></span> </label>
+        <label class="menu-open-button" for="menu-open"><span class="lines line-1"></span> <span class="lines line-2"></span> <span class="lines line-3"></span> </label>
+        <div ng-class="{'profile-icon': isMenuOpen}" ng-show="isMenuOpen && hasLogin" ng-click="navigateTo('account')"><img src="../img/adam.jpg"></div>
         <a href="#" class="menu-item item-1" ng-click="navigateTo('immigration')"> <span class="menu-item--text" ng-if="isMenuOpen">Immigration Paper</span><i class="ion-document-text"></i> </a>
         <a href="#" class="menu-item item-2" ng-click="navigateTo('chatroom')"> <span class="menu-item--text" ng-if="isMenuOpen">Chatroom</span><i class="ion-chatboxes"></i> </a>
         <a href="#" class="menu-item item-3" ng-click="navigateTo('catering')"> <span class="menu-item--text" ng-if="isMenuOpen">Catering</span><i class="ion-coffee"></i> </a>
@@ -24,7 +25,7 @@
       </nav>
     </div>
     <div class="account-setting" ng-click="modal.show()">
-      <i class="ion-gear-a"></i>
+      <i ng-class="{'ion-log-in': !hasLogin, 'ion-share': hasLogin}"></i>
     </div>
   </ion-content>
 </ion-view>

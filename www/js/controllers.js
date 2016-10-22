@@ -6,6 +6,7 @@ angular.module('starter.controllers', [])
   $scope.isMenuOpen = false;
   $scope.user = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
   $scope.newUser = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
+  $scope.currentUser = {};
   $scope.updateUser = {
       'firstname': 'CY',
       'lastname': 'Kwong',
@@ -16,7 +17,7 @@ angular.module('starter.controllers', [])
       'gender': null,
       'address': 'Hong Kong'
   };
-    
+
   $scope.trip = {
     "flight_number_to": null,
     "foreign_address": null,
@@ -35,8 +36,8 @@ angular.module('starter.controllers', [])
 
   $scope.showLogin = true;
   $scope.modalTitle = "Login";
-  $scope.hasLogin = true;
-    
+  $scope.hasLogin = false;
+
   // bluetoothSerial.available(function() {
   //   bluetoothSerial.enable(function() {
   //     bluetoothSerial.connect('', function() {
@@ -82,6 +83,8 @@ angular.module('starter.controllers', [])
     $scope.api_call.save($scope.params, function(response){
         console.log(response);
         UserService.setUser(response);
+        $scope.currentUser = response;
+        $scope.hasLogin = true;
         $scope.modal.hide();
     });
   };
@@ -111,14 +114,14 @@ angular.module('starter.controllers', [])
     }
 
     console.log($scope.params);
-      
+
     $http(params).then(function(response){
         console.log(response);
     }, function(response){
         console.log(response);
     });
   }
-  
+
   $scope.searchBluetooth = function() {
     angular.element(document.getElementsByClassName('search-profile')).css('-webkit-animation', 'avatar 0.8s');
     $scope.isBluetoothConnected = true;
@@ -144,7 +147,7 @@ angular.module('starter.controllers', [])
   };
   $scope.openForm = false;
   $scope.qrcode_string = 'www.acesobee.com';
-  $scope.size = 150;
+  $scope.size = 300;
   $scope.correctionLevel = '';
   $scope.typeNumber = 0;
   $scope.inputMode = '';
@@ -153,12 +156,12 @@ angular.module('starter.controllers', [])
   $scope.init = function () {
       $scope.setTrip();
   }
-    
+
   $scope.setTrip = function () {
-      
+
     $scope.trip = $scope.data;
     $scope.trip.user_info = UserService.getUser();
-    
+
     var params = {
         method: 'POST',
         url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips',
@@ -169,7 +172,7 @@ angular.module('starter.controllers', [])
     }
 
     console.log(params);
-      
+
     $http(params).then(function(response){
         TripService.setTrip(response.data);
         console.log(response);
@@ -179,7 +182,7 @@ angular.module('starter.controllers', [])
         console.log(response);
     });
   }
-  
+
   $scope.getTrip = function () {
     $scope.qrcode_string = 'http://cathay-pacific-146715.appspot.com/trips/' + TripService.getTrip().uid + '?access_token=' + TripService.getTrip().access_token;
     $scope.openQRCode();
@@ -201,7 +204,7 @@ angular.module('starter.controllers', [])
     });
 */    
   };
-    
+
   $ionicModal.fromTemplateUrl('templates/modal.html', {
     scope: $scope,
     animation: 'fade-out'
@@ -264,7 +267,7 @@ angular.module('starter.controllers', [])
     } else
       $scope.openForm = !$scope.openForm;
   }
-  
+
 })
 
 .controller('ChatroomCtrl', function($scope) {})
@@ -302,8 +305,12 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope, UserService) {
+.controller('AccountCtrl', function($scope, UserService, $ionicHistory) {
   $scope.user = UserService.getUser();
+
+  $scope.goBack = function() {
+    $ionicHistory.goBack();
+  }
   // $scope.settings = {
   //   enableFriends: true
   // };
