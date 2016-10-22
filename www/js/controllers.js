@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('HomeCtrl', function($scope, $state, $ionicModal, System, UserService, $ionicPopup, $http) {
+.controller('HomeCtrl', function($scope, $state, $ionicModal, System, UserService, TripService, $ionicPopup, $http) {
   // variables
   $scope.isBluetoothConnected = false;
   $scope.isMenuOpen = false;
@@ -16,9 +16,33 @@ angular.module('starter.controllers', [])
       'gender': null,
       'address': 'Hong Kong'
   };
+    
+  $scope.trip = {
+    "flight_number_to": null,
+    "foreign_address": null,
+    "update_time": "2016-10-22T10:09:27.500811",
+    "user_info": {},
+    "create_time": "2016-10-22T10:09:27.500785",
+    "from_date": null,
+    "destination": null,
+    "to_date": null,
+    "owner": 5629499534213120,
+    "uid": 5891733057437696,
+    "flight_number_back": null,
+    "last_visit_country": null,
+    "next_visit_country": null
+  };
+
   $scope.showLogin = true;
   $scope.modalTitle = "Login";
   $scope.hasLogin = true;
+    
+  $scope.qrcode_string = 'www.acesobee.com';
+  $scope.size = 150;
+  $scope.correctionLevel = '';
+  $scope.typeNumber = 0;
+  $scope.inputMode = '';
+  $scope.image = true;
 
   // bluetoothSerial.available(function() {
   //   bluetoothSerial.enable(function() {
@@ -63,7 +87,7 @@ angular.module('starter.controllers', [])
 
     $scope.api_call.save($scope.params, function(response){
         console.log(response);
-        UserService.setTokens(response.access_token);
+        UserService.setUser(response);
         $scope.modal.hide();
     });
   };
@@ -76,7 +100,7 @@ angular.module('starter.controllers', [])
 
     $scope.api_call.save($scope.params, function(response){
         console.log(response);
-        UserService.setTokens(response.access_token);
+        UserService.setUser(response);
         $scope.user = $scope.newUser;
         $scope.login();
     });
@@ -87,7 +111,7 @@ angular.module('starter.controllers', [])
         method: 'PUT',
         url: 'http://cathay-pacific-146715.appspot.com/api/v1/users',
         headers: {
-            'X-WALKER-ACCESS-TOKEN': UserService.getTokens()
+            'X-WALKER-ACCESS-TOKEN': UserService.getUser().access_token
         },
         data: $scope.updateUser
     }
@@ -100,27 +124,60 @@ angular.module('starter.controllers', [])
         console.log(response);
     });
   }
-      
+  
   $scope.searchBluetooth = function() {
     angular.element(document.getElementsByClassName('search-profile')).css('-webkit-animation', 'avatar 0.8s');
     $scope.isBluetoothConnected = true;
-
   };
 })
 
-.controller('ImmigrationCtrl', function($scope) {
+.controller('ImmigrationCtrl', function($scope, TripService, UserService, $http) {
   $scope.data = {
-    name: 'Elvis Wong',
-    flight_number_to: 'UX001',
-    flight_number_back: 'UX002',
-    local_address: 'Room 406, UG Hall V, HKUST, Clear Water Bay, Kowloon, Hong Kong',
-    foreign_address: '6127 Tudor Pl, Linden, NC, 28356',
-    origin: 'Hong Kong',
-    destination: 'USA',
-    duration: '22/10/2016-29/10/2016',
-    last_visit_country: 'Japan',
-    next_visit_country: 'USA'
+    "flight_number_to": null,
+    "foreign_address": null,
+    "update_time": "2016-10-22T10:09:27.500811",
+    "user_info": null,
+    "create_time": "2016-10-22T10:09:27.500785",
+    "from_date": null,
+    "destination": null,
+    "to_date": null,
+    "owner": 5629499534213120,
+    "uid": 5891733057437696,
+    "flight_number_back": null,
+    "last_visit_country": null,
+    "next_visit_country": null
   };
+
+  $scope.init = function () {
+      $scope.setTrip();
+  }
+    
+  $scope.setTrip = function () {
+      
+    $scope.trip = $scope.data;
+    $scope.trip.user_info = UserService.getUser();
+    
+    var params = {
+        method: 'POST',
+        url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips',
+        headers: {
+            'X-WALKER-ACCESS-TOKEN': UserService.getUser().access_token
+        },
+        data: $scope.trip
+    }
+
+    console.log($scope.params);
+      
+    $http(params).then(function(response){
+        console.log(response);
+    }, function(response){
+        console.log(response);
+    });
+  }
+  
+  $scope.getTrip = function () {
+      
+  }
 })
 
 .controller('ChatroomCtrl', function($scope) {})

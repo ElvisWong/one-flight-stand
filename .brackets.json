@@ -9,6 +9,10 @@
         "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/platforms/ios/www/js/controllers.js",
         "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/www/service-worker.js",
         "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/www/lib/ionic/js/ngCordova/dist/ng-cordova.min.js",
-        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/www/lib/ionic/js/ngCordova/dist/ng-cordova.js"
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/www/lib/ionic/js/ngCordova/dist/ng-cordova.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/www/lib/ionic/js/ngCordova/dist/ng-cordova-mocks.min.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/www/lib/ionic/js/ngCordova/dist/ng-cordova-mocks.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/www/lib/ionic/js/ionic.min.js",
+        "/Users/cycycy_kwong/Documents/cathay-pacific-hackathon/www/js/services.js"
     ]
 }

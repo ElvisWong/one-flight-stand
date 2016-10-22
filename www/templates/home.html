@@ -38,17 +38,20 @@
     <ion-content class="padding">
       <div class="list" ng-show="showLogin">
         <label class="item item-input">
-          <span class="input-label">Username: </span>
+          <span class="input-label">Email </span>
           <input ng-model="user.email" type="text">
         </label>
         <label class="item item-input">
-          <span class="input-label">Password: </span>
+          <span class="input-label">Password </span>
           <input ng-model="user.password" type="password" autocorrect="off" autocapitalize="off">
         </label>
         <button class="button modal-button button-dark" ng-click="login()">Login</button>
         <button class="button modal-button button-clear button-dark" ng-click="changeTo('Sign Up')">Sign Up</button>
       </div>
       <div class="list" ng-show="!showLogin">
+<!--
+        <qr text="qrcode_string" type-number="typeNumber" correction-level="correctionLevel" size="size" input-mode="inputMode" image="image"></qr>
+-->
         <label class="item item-input">
           <span class="input-label">Email</span>
           <input ng-model="newUser.email" type="text" autocorrect="off" autocapitalize="off">
