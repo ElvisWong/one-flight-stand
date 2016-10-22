@@ -1,25 +1,30 @@
 angular.module('starter.services', [])
 
-.service('LoginService', function($q) {
+.service('System', function($resource) {
     return {
-        loginUser: function(name, pw) {
-            var deferred = $q.defer();
-            var promise = deferred.promise;
+        login: function () {
+            return $resource('http://cathay-pacific-146715.appspot.com/api/v1/tokens');
+        },
+        register: function () {
+            return $resource('http://cathay-pacific-146715.appspot.com/api/v1/users');
+        },
+        update: function () {
+            return $resource('http://cathay-pacific-146715.appspot.com/api/v1/users');
+        }
+    }
+})
 
-            if (name == 'user' && pw == 'secret') {
-                deferred.resolve('Welcome ' + name + '!');
-            } else {
-                deferred.reject('Wrong credentials.');
-            }
-            promise.success = function(fn) {
-                promise.then(fn);
-                return promise;
-            }
-            promise.error = function(fn) {
-                promise.then(null, fn);
-                return promise;
-            }
-            return promise;
+.service('UserService', function($resource){
+    var user = {
+        'tokens': null
+    };
+    
+    return {
+        getTokens: function () {
+            return user.tokens;
+        },
+        setTokens: function (tokens) {
+            user.tokens = tokens;
         }
     }
 })

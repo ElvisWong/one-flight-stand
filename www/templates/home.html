@@ -38,14 +38,19 @@
     <ion-content class="padding">
       <div class="list" ng-show="showLogin">
         <label class="item item-input">
+<<<<<<< HEAD
           <span class="input-label">Username/Email: </span>
           <input ng-model="user.username" type="text" autocorrect="off" autocapitalize="off">
+=======
+          <span class="input-label">Username: </span>
+          <input ng-model="user.email" type="text">
+>>>>>>> 8f7928acf7379c1f209cbef4774cb4953fc630de
         </label>
         <label class="item item-input">
           <span class="input-label">Password: </span>
           <input ng-model="user.password" type="password" autocorrect="off" autocapitalize="off">
         </label>
-        <button class="button modal-button button-dark" ng-click="login(user)">Login</button>
+        <button class="button modal-button button-dark" ng-click="login()">Login</button>
         <button class="button modal-button button-clear button-dark" ng-click="changeTo('Sign Up')">Sign Up</button>
       </div>
       <div class="list" ng-show="!showLogin">
@@ -62,7 +67,7 @@
           <input ng-model="newUser.password" type="password" autocorrect="off" autocapitalize="off">
         </label>
         <button class="button modal-button button-clear button-dark" ng-click="changeTo('Login')">Login</button>
-        <button class="button modal-button button-dark" ng-click="signUp(newUser)">Sign Up</button>
+        <button class="button modal-button button-dark" ng-click="signUp()">Sign Up</button>
       </div>
     </ion-content>
   </ion-modal-view>
