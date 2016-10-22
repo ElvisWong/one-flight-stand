@@ -60,7 +60,8 @@ angular.module('starter.controllers', [])
   // });
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
-    scope: $scope
+    scope: $scope,
+    focusFirstInput: true
   }).then(function(modal) {
     $scope.modal = modal;
   });
@@ -131,7 +132,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ImmigrationCtrl', function($scope, TripService, UserService, $http) {
+.controller('ImmigrationCtrl', function($scope, TripService, UserService, $http, $ionicHistory, $ionicPopup, $ionicModal) {
   $scope.data = {
     "flight_number_to": null,
     "foreign_address": null,
@@ -147,6 +148,7 @@ angular.module('starter.controllers', [])
     "last_visit_country": null,
     "next_visit_country": null
   };
+  $scope.openForm = false;
 
   $scope.init = function () {
       $scope.setTrip();
@@ -176,8 +178,72 @@ angular.module('starter.controllers', [])
   }
   
   $scope.getTrip = function () {
-      
+  
+  };
+    
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope,
+    animation: 'fade-out'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openQRCode = function(index) {
+    switch(index) {
+      case 1: break;
+      case 2: break;
+      case 3: break;
+      default:break;
+    }
+    $scope.modal.show();
+  };
+
+  $scope.checkFinished = function() {
+    for(var key in $scope.data) {
+      if (typeof $scope.data[key] === 'object') {
+        for (var childKey in $scope.data[key]) {
+          if ($scope.data[key][childKey] === undefined || $scope.data[key][childKey] === '' || $scope.data[key][childKey] === null)
+            return true;
+        }
+      } else {
+        if ($scope.data[key] === undefined || $scope.data[key] === '' || $scope.data[key] === null)
+          return true;
+      }
+    }
+    return false;
+  };
+
+  $scope.submitForm = function() {
+
   }
+
+  $scope.goBack = function() {
+    if ($scope.openForm)
+      $scope.destroyForm();
+    else
+      $ionicHistory.goBack();
+  };
+
+  $scope.destroyForm = function() {
+    var confirmPopup = $ionicPopup.confirm({
+       title: 'Quit Immigration Paper',
+       template: 'Are you sure you want to quit this form?'
+     }).then(function(res) {
+       if (res) {
+         $scope.data = {};
+         $scope.openForm = false;
+       }
+     });
+  }
+
+  $scope.createForm = function() {
+    console.log("data: ", $scope.data);
+    if ($scope.openForm) {
+      $scope.destroyForm();
+    } else
+      $scope.openForm = !$scope.openForm;
+  }
+  
 })
 
 .controller('ChatroomCtrl', function($scope) {})

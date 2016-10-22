@@ -10290,3 +10290,115 @@ a.button {
 
 .profile .profile-list li {
   background: transparent; }
+
+/* Immigration */
+.immigration-header-bar {
+  max-height: 250px;
+  height: 250px;
+  background: #669AE1;
+  transition: height 1s; }
+  .immigration-header-bar.closePanel {
+    height: 60px; }
+  .immigration-header-bar .buttons {
+    height: 30px;
+    position: absolute; }
+    .immigration-header-bar .buttons .button {
+      margin: 10px;
+      background: transparent; }
+      .immigration-header-bar .buttons .button i {
+        font-size: 2em;
+        color: #fff; }
+  .immigration-header-bar .title {
+    font-size: 3em;
+    line-height: 2em;
+    text-align: left !important;
+    width: 100%;
+    height: 2em;
+    top: 150px;
+    left: 10px !important;
+    color: #fff;
+    z-index: 2;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+    transition: transform 1s; }
+    .immigration-header-bar .title.header-title {
+      transform: scale(1) translate(-10px, -150px);
+      position: relative;
+      text-align: center !important;
+      text-shadow: none; }
+  .immigration-header-bar .description {
+    font-size: 2em;
+    line-height: 1.3em;
+    color: #fff;
+    text-align: right;
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    width: 200px;
+    margin: 5px 0px; }
+  .immigration-header-bar .immigration-icon {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 30px;
+    bottom: 30px; }
+    .immigration-header-bar .immigration-icon img {
+      width: 100%;
+      height: auto;
+      opacity: 0.8;
+      -webkit-filter: blur(1.5px);
+      -moz-filter: blur(1.5px);
+      -o-filter: blur(1.5px);
+      -ms-filter: blur(1.5px);
+      filter: blur(1.5px); }
+  .immigration-header-bar .header-title {
+    line-height: 60px;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    color: #fff; }
+  .immigration-header-bar .create-btn {
+    width: 75px;
+    height: 75px;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    bottom: -37.5px;
+    background: #fff;
+    border: 1px outset rgba(102, 154, 225, 0.7);
+    border-radius: 50%; }
+    .immigration-header-bar .create-btn.return i {
+      margin-left: 18px; }
+    .immigration-header-bar .create-btn i {
+      color: #669AE1;
+      font-size: 3em;
+      line-height: 75px;
+      width: 50px;
+      margin-left: 21.75px; }
+
+.immigration-record {
+  height: 100%;
+  background: #fff; }
+
+.immigration {
+  height: 100%;
+  background: #fff; }
+  .immigration .list .item {
+    padding: 0 0 5px 16px; }
+    .immigration .list .item .input-label {
+      line-height: 20px; }
+    .immigration .list .item input {
+      height: 25px; }
+  .immigration .list .button-block {
+    width: 80%;
+    margin: 10px auto;
+    color: #555;
+    font-weight: 500; }
+    .immigration .list .button-block.disable {
+      color: rgba(85, 85, 85, 0.5);
+      border: 1px solid rgba(68, 68, 68, 0.5); }
+
+.qr-code {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin: 0 auto; }
