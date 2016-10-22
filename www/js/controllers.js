@@ -7,16 +7,6 @@ angular.module('starter.controllers', [])
   $scope.user = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
   $scope.newUser = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
   $scope.currentUser = {};
-  $scope.updateUser = {
-      'firstname': 'CY',
-      'lastname': 'Kwong',
-      'nationality': null,
-      'date_of_birth': null,
-      'passport_number': null,
-      'visa_number': null,
-      'gender': null,
-      'address': 'Hong Kong'
-  };
 
   $scope.trip = {
     "flight_number_to": null,
@@ -35,8 +25,8 @@ angular.module('starter.controllers', [])
   };
 
   $scope.showLogin = true;
+  $scope.isLogin = false;
   $scope.modalTitle = "Login";
-  $scope.hasLogin = false;
 
   // bluetoothSerial.available(function() {
   //   bluetoothSerial.enable(function() {
@@ -80,11 +70,14 @@ angular.module('starter.controllers', [])
 
     console.log($scope.params);
 
+    System.showLoading();
     $scope.api_call.save($scope.params, function(response){
+        System.hideLoading();
         console.log(response);
         UserService.setUser(response);
         $scope.currentUser = response;
-        $scope.hasLogin = true;
+        System.setLogin();
+        $scope.isLogin = true;
         $scope.modal.hide();
     });
   };
@@ -95,7 +88,9 @@ angular.module('starter.controllers', [])
 
     $scope.params = $scope.newUser;
 
+    System.showLoading();
     $scope.api_call.save($scope.params, function(response){
+        System.hideLoading();
         console.log(response);
         UserService.setUser(response);
         $scope.user = $scope.newUser;
@@ -103,33 +98,15 @@ angular.module('starter.controllers', [])
     });
   };
 
-  $scope.update = function () {
-    var params = {
-        method: 'PUT',
-        url: 'http://cathay-pacific-146715.appspot.com/api/v1/users',
-        headers: {
-            'X-WALKER-ACCESS-TOKEN': UserService.getUser().access_token
-        },
-        data: $scope.updateUser
-    }
-
-    console.log($scope.params);
-
-    $http(params).then(function(response){
-        console.log(response);
-    }, function(response){
-        console.log(response);
-    });
-  }
-
   $scope.searchBluetooth = function() {
     angular.element(document.getElementsByClassName('search-profile')).css('-webkit-animation', 'avatar 0.8s');
     $scope.isBluetoothConnected = true;
   };
 })
 
-.controller('ImmigrationCtrl', function($scope, TripService, UserService, $http, $ionicHistory, $ionicPopup, $ionicModal) {
+.controller('ImmigrationCtrl', function($scope, TripService, UserService, System, $http, $ionicHistory, $ionicPopup, $ionicModal) {
   $scope.data = {
+    "access_token": null,
     "flight_number_to": null,
     "foreign_address": null,
     "update_time": "2016-10-22T10:09:27.500811",
@@ -145,42 +122,117 @@ angular.module('starter.controllers', [])
     "next_visit_country": null
   };
   $scope.openForm = false;
+  $scope.isLoading = false;
   $scope.qrcode_string = 'www.acesobee.com';
   $scope.size = 300;
   $scope.correctionLevel = '';
   $scope.typeNumber = 0;
   $scope.inputMode = '';
   $scope.image = true;
+  
+  $scope.trip_list_data = [];
+  $scope.isLogin = System.getIsLogin();
 
   $scope.init = function () {
-      $scope.setTrip();
+      if($scope.isLogin)
+          $scope.getTripList();
   }
 
   $scope.setTrip = function () {
 
-    $scope.trip = $scope.data;
-    $scope.trip.user_info = UserService.getUser();
-
-    var params = {
-        method: 'POST',
-        url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips',
-        headers: {
-            'X-WALKER-ACCESS-TOKEN': UserService.getUser().access_token
-        },
-        data: $scope.trip
+    if(!$scope.isLogin){
+        return;
     }
+      
+    $scope.trip = $scope.data;
+    if($scope.isLogin){
+        $scope.trip.user_info = UserService.getUser();
 
-    console.log($scope.params);
+        var params = {
+            method: 'POST',
+            url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips',
+            headers: {
+                'X-WALKER-ACCESS-TOKEN': UserService.getUser().access_token
+            },
+            data: $scope.trip
+        }
+    }
+    else{
+        $scope.trip.user_info = {};
+        console.log($scope.trip.user_info);
+        var params = {
+            method: 'POST',
+            url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips',
+            data: $scope.trip
+        }
+    }
+    console.log(params);
 
+    $scope.isLoading = true;
+    System.showLoading();
     $http(params).then(function(response){
+        TripService.setTrip(response.data);
         console.log(response);
+        console.log(response.data.access_token);
+        if($scope.isLogin)
+            $scope.getTripList();
+        else
+            $scope.trip_list_data.push(response.data);
+        System.hideLoading();
+        $scope.isLoading = false;
     }, function(response){
         console.log(response);
     });
   }
 
-  $scope.getTrip = function () {
+  $scope.getTripList = function () {
+    if(!$scope.isLogin){
+        return;
+    }
+    var params = {
+        method: 'GET',
+        url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips',
+        headers: {
+            'X-WALKER-ACCESS-TOKEN': UserService.getUser().access_token
+        },
+    }
 
+    console.log(params);
+      
+    $scope.isLoading = true;
+    System.showLoading();
+    $http(params).then(function(response){
+        console.log('getTripList:');
+        console.log(response);
+        $scope.trip_list_data = response.data.results;
+        console.log($scope.trip_list_data);
+        System.hideLoading();
+        $scope.isLoading = false;
+    }, function(response){
+        console.log(response);
+    });
+  }
+  
+  $scope.getTrip = function (data) {
+    $scope.qrcode_string = 'http://cathay-pacific-146715.appspot.com/trips/' + data.uid + '?access_token=' + data.access_token;
+    $scope.openQRCode();
+/*    
+    var params = {
+        method: 'GET',
+        url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips/' + TripService.getTrip().uid + '?access_token=' + TripService.getTrip().access_token,
+        headers: {
+            'X-WALKER-ACCESS-TOKEN': UserService.getUser().access_token
+        },
+    }
+
+    console.log(params);
+      
+    $http(params).then(function(response){
+        console.log(response);
+    }, function(response){
+        console.log(response);
+    });
+*/    
   };
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
@@ -190,13 +242,7 @@ angular.module('starter.controllers', [])
     $scope.modal = modal;
   });
 
-  $scope.openQRCode = function(index) {
-    switch(index) {
-      case 1: break;
-      case 2: break;
-      case 3: break;
-      default:break;
-    }
+  $scope.openQRCode = function() {
     $scope.modal.show();
   };
 
@@ -559,12 +605,47 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope, UserService, $ionicHistory) {
+.controller('AccountCtrl', function($scope, UserService, $ionicHistory, $http) {
   $scope.user = UserService.getUser();
+  $scope.date = new Date('1911-11-11 00:00:00');
+  $scope.updateUser = {
+      'firstname': 'CY',
+      'lastname': 'Kwong',
+      'nationality': 'TH',
+      'date_of_birth': $scope.date.getTime() / 1000,
+      'passport_number': '12345678',
+      'visa_number': '999',
+      'gender': 'male',
+      'address': 'Hong Kong'
+  };
 
+  console.log($scope.user);
+    
   $scope.goBack = function() {
     $ionicHistory.goBack();
   }
+  
+  $scope.update = function () {
+    var params = {
+        method: 'PUT',
+        url: 'http://cathay-pacific-146715.appspot.com/api/v1/users',
+        headers: {
+            'X-WALKER-ACCESS-TOKEN': UserService.getUser().access_token
+        },
+        data: $scope.updateUser
+    };
+
+    console.log(params);
+
+    $http(params).then(function(response){
+        console.log(response);
+        UserService.setUser(response.data);
+        $scope.user = response.data;
+    }, function(response){
+        console.log(response);
+    });
+  }
+
   // $scope.settings = {
   //   enableFriends: true
   // };
