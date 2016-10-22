@@ -25,10 +25,19 @@ angular.module('starter.services', [])
 })
 
 .service('TripService', function($resource){
+    var trip = null;
+    var trip_qrcode_string = null;
+    
     return{
         set: function (tokens) {
             return $resource('http://cathay-pacific-146715.appspot.com/api/v1/trips', {},
                              {headers: { 'X-WALKER-ACCESS-TOKEN': tokens }});
+        },
+        setTrip: function (newTrip) {
+            trip = newTrip;
+        },
+        getTrip: function () {
+            return trip;
         }
     }
 })

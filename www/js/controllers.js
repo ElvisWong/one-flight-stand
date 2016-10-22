@@ -127,6 +127,7 @@ angular.module('starter.controllers', [])
 
 .controller('ImmigrationCtrl', function($scope, TripService, UserService, $http, $ionicHistory, $ionicPopup, $ionicModal) {
   $scope.data = {
+    "access_token": null,
     "flight_number_to": null,
     "foreign_address": null,
     "update_time": "2016-10-22T10:09:27.500811",
@@ -167,17 +168,38 @@ angular.module('starter.controllers', [])
         data: $scope.trip
     }
 
-    console.log($scope.params);
+    console.log(params);
       
     $http(params).then(function(response){
+        TripService.setTrip(response.data);
         console.log(response);
+        console.log(response.data.access_token);
+        //$scope.getTrip(response.data.access_token);
     }, function(response){
         console.log(response);
     });
   }
   
   $scope.getTrip = function () {
-  
+    $scope.qrcode_string = 'http://cathay-pacific-146715.appspot.com/trips/' + TripService.getTrip().uid + '?access_token=' + TripService.getTrip().access_token;
+    $scope.openQRCode();
+/*    
+    var params = {
+        method: 'GET',
+        url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips/' + TripService.getTrip().uid + '?access_token=' + TripService.getTrip().access_token,
+        headers: {
+            'X-WALKER-ACCESS-TOKEN': UserService.getUser().access_token
+        },
+    }
+
+    console.log(params);
+      
+    $http(params).then(function(response){
+        console.log(response);
+    }, function(response){
+        console.log(response);
+    });
+*/    
   };
     
   $ionicModal.fromTemplateUrl('templates/modal.html', {
@@ -280,12 +302,8 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.user = {
-    username: 'Elvis Wong',
-    jobTitle: 'JS Developer',
-    email: 'tywongao@gmail.com'
-  };
+.controller('AccountCtrl', function($scope, UserService) {
+  $scope.user = UserService.getUser();
   // $scope.settings = {
   //   enableFriends: true
   // };
