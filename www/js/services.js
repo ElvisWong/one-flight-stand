@@ -1,12 +1,33 @@
 angular.module('starter.services', [])
 
-.service('System', function($resource) {
+.service('System', function($resource, $ionicLoading) {
+    var isLogin = false;
+    
     return {
         login: function () {
             return $resource('http://cathay-pacific-146715.appspot.com/api/v1/tokens');
         },
         register: function () {
             return $resource('http://cathay-pacific-146715.appspot.com/api/v1/users');
+        },
+        setLogin: function () {
+            isLogin = true;
+        },
+        setLogout: function () {
+            isLogin = false;
+        },
+        getIsLogin: function () {
+            return isLogin;
+        },
+        showLoading: function () {
+            $ionicLoading.show({
+              template: '<ion-spinner icon="bubbles"></ion-spinner>'
+            }).then(function(){
+               console.log("The loading indicator is now displayed");
+            });
+        },
+        hideLoading: function () {
+            $ionicLoading.hide();
         }
     }
 })

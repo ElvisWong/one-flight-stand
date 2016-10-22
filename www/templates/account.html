@@ -14,13 +14,12 @@
         <div class="profile-image">
           <img src="../img/adam.jpg">
         </div>
-        <div class="profile-name">
+        <div class="profile-name" ng-click="update()">
           <span>{{user.name}}</span>
           <i class="ion-edit"></i>
         </div>
-        <div class="profile-job-title" ng-if="user.jobTitle">
-          <span>{{user.jobTitle}}</span>
-          <i class="ion-edit"></i>
+        <div class="profile-job-title" ng-if="true">
+          <span>Engineer</span>
         </div>
       </div>
       <ul class="profile-list list">
@@ -30,7 +29,7 @@
         </li>
         <li class="item">
           <span>Date of Birth: </span>
-          <span>{{user.date_of_birth}}</span>
+          <span>{{user.date_of_birth | limitTo: 10}}</span>
         </li>
         <li class="item">
           <span>Passport No.: </span>

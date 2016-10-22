@@ -1,5 +1,5 @@
 <ion-view view-title="immigration" ng-init="init()">
-  <ion-content scroll="false">
+  <ion-content>
     <ion-header-bar align-title="left" class="bar immigration-header-bar" ng-class="{'closePanel': openForm}">
       <div class="buttons">
         <button class="button" ng-click="goBack()">
@@ -12,17 +12,27 @@
         <img src="../img/passport_copy.png">
       </div>
       <!-- <span class="header-title" ng-show="openForm">Immigration</span> -->
-      <div class="create-btn" ng-click="createForm()" ng-class="{'return': openForm}">
+      <div class="create-btn" ng-click="setTrip()" ng-class="{'return': openForm}">
         <i class="ion-plus-round" ng-if="!openForm"></i>
         <i class="ion-arrow-return-left" ng-if="openForm"></i>
       </div>
     </ion-header-bar>
     <div class="immigration-record list" ng-show="!openForm">
-      <a class="item item-avatar" href="#" ng-click="getTrip()">
+      <a ng-show="trip_list_data.length > 0 && !isLoading" class="item item-avatar" href="#" ng-click="getTrip(data)" ng-repeat="data in trip_list_data">
         <img src="../img/flags/48/Japan.png">
-        <h2>Cathay Pacific : UX 001</h2>
+        <h2>UID : {{data.uid}}</h2>
+        <p>Create Time : {{data.create_time}}</p>
         <p>Japan Immigration - 10/9/2016</p>
       </a>
+      <a ng-hide="trip_list_data.length > 0 || isLoading" class="item item-avatar" href="#">
+        <img src="../img/icon.png">
+        <h2>No Trip Record is available.</h2>
+        <p>Press + to start your first Trip.</p>
+      </a>
+      <a ng-show="isLoading" class="item text-center">
+        <h2><ion-spinner icon="bubbles"></ion-spinner></h2>
+      </a>
+<!--        
       <a class="item item-avatar" href="#" ng-click="getTrip()">
         <img src="../img/flags/48/Thailand.png">
         <h2>Cathay Pacific : UX 002</h2>
@@ -33,6 +43,7 @@
         <h2>Cathay Pacific : UX 003</h2>
         <p>Poland Immigration - 03/2/2016</p>
       </a>
+-->        
     </div>
     <div class="immigration" ng-show="openForm">
       <div class="list">
@@ -59,7 +70,7 @@
     <ion-header-bar class="bar bar-header bar-light">
       <h1 class="title">Immigration Record</h1>
       <button class="button button-clear button-primary" ng-click="modal.hide()"><i class="ion-close-round"></i></button>
-    </ion-header-bar class="padding">
+    </ion-header-bar>
     <ion-content>
       <div class="qr-code">
         <qr text="qrcode_string" type-number="typeNumber" correction-level="correctionLevel" size="size" input-mode="inputMode" image="image"></qr>
