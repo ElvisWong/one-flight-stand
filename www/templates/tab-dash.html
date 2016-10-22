@@ -1,14 +1,31 @@
-<ion-header-bar align-title="center" class="bar bar-balanced bar-chatroom">
+<!-- <ion-header-bar align-title="center" class="bar bar-balanced bar-chatroom">
   <div class="buttons">
     <button class="button button-clear" ng-click="goBack()"><i class="ion-ios-arrow-left"></i></button>
   </div>
   <h1 class="title">Chatroom</h1>
-</ion-header-bar>
+</ion-header-bar> -->
 
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
+<ion-view view-title="tab-dash">
+  <ion-content>
+    <ion-header-bar align-title="left" class="bar chatroom-header-bar" ng-class="{'closePanel': openChat}">
+      <div class="buttons">
+        <button class="button" ng-click="goBack()">
+          <i class="ion-ios-arrow-back"></i>
+        </button>
+      </div>
+      <h1 class="title" ng-class="{'header-title': openChat}">Chatroom</h1>
+      <h3 class="description" ng-show="!openChat">Chat within this flight</h3>
+      <div class="chatroom-icon" ng-show="!openChat">
+        <img src="../img/chatroom_icon.png">
+      </div>
+      <!-- <span class="header-title" ng-show="openForm">Immigration</span> -->
+      <div class="create-btn" ng-click="createChat()" ng-class="{'return': openChat}">
+        <i class="ion-plus-round" ng-if="!openChat"></i>
+        <i class="ion-arrow-return-left" ng-if="openChat"></i>
+      </div>
+    </ion-header-bar>
     <div class="list chatroom-dashboard">
-      <a class="item item-avatar" href="#" ng-click="openChat(1)">
+      <a class="item item-avatar" href="#" ng-click="viewChat(1)">
         <img src="../img/group_icon.png">
         <h2>Flight Group</h2>
         <p>Last Message Here</p>

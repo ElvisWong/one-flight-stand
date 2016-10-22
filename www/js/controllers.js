@@ -269,8 +269,14 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DashCtrl', function($scope, $ionicHistory) {
+  $scope.openChat = false;
+
   $scope.goBack = function() {
     $ionicHistory.goBack();
+  }
+  $scope.createChat = function() {
+    console.log("create chat", $scope.openChat);
+    $scope.openChat = !$scope.openChat;
   }
 })
 

@@ -609,6 +609,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	max-height: 250px;
 	height: 250px;
 	background: #669AE1;
+	-webkit-transition: height 1s;
 	transition: height 1s;
 	&.closePanel {
 		height: 60px;
@@ -636,9 +637,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		color: #fff;
 		z-index: 2;
 		text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+		-webkit-transition: -webkit-transform 1s;
 		transition: transform 1s;
 		&.header-title {
 			// font-size: 2em;
+			-webkit-transform: scale(1) translate(-10px, -150px);
 			transform: scale(1) translate(-10px, -150px);
 			position: relative;
 			text-align: center !important;
@@ -753,6 +756,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	max-height: 250px;
 	height: 250px;
 	background: #ffcc00;
+	-webkit-transition: height 1s;
 	transition: height 1s;
 	&.closePanel {
 		height: 60px;
@@ -780,9 +784,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 		color: #fff;
 		z-index: 2;
 		text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+		-webkit-transition: -webkit-transform 1s;
 		transition: transform 1s;
 		&.header-title {
 			// font-size: 2em;
+			-webkit-transform: scale(1) translate(-10px, -150px);
 			transform: scale(1) translate(-10px, -150px);
 			position: relative;
 			text-align: center !important;
@@ -967,7 +973,7 @@ img.profile-pic.right {
 }
 
 .ion-email {
-  float: right;
+  // float: right;
   font-size: 32px;
   vertical-align: middle;
 }
@@ -1109,4 +1115,110 @@ a.autolinker {
 
 .loader .ion-loading-c {
   font-size: 64px;
+}
+
+
+/* Chatroom */
+.chatroom-header-bar {
+	max-height: 250px;
+	height: 250px;
+	background: #70CC72;
+	-webkit-transition: height 1s;
+	transition: height 1s;
+	&.closePanel {
+		height: 60px;
+	}
+	.buttons {
+		height: 30px;
+		position: absolute;
+		.button {
+			margin: 10px;
+			background: transparent;
+			i {
+				font-size: 2em;
+				color: #fff;
+			}
+		}
+	}
+	.title {
+		font-size: 3em;
+		line-height: 2em;
+		text-align: left !important;
+		width: 100%;
+		height: 2em;
+		top: 150px;
+		left: 10px !important;
+		color: #fff;
+		z-index: 2;
+		text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+		-webkit-transition: -webkit-transform 1s;
+		transition: transform 1s;
+		&.header-title {
+			// font-size: 2em;
+			-webkit-transform: scale(1) translate(-10px, -150px);
+			transform: scale(1) translate(-10px, -150px);
+			position: relative;
+			text-align: center !important;
+			text-shadow: none;
+		}
+	}
+	.description {
+		font-size: 2em;
+		line-height: 1.3em;
+		color: #fff;
+		text-align: right;
+		position: absolute;
+		right: 30px;
+		top: 10px;
+		width: 200px;
+		margin: 5px 0px;
+	}
+	.chatroom-icon {
+		width: 150px;
+		height: 150px;
+		position: absolute;
+		left: 30px;
+		bottom: 30px;
+		img {
+			width: 100%;
+			height: auto;
+			opacity: 0.8;
+			-webkit-filter: blur(1.5px);
+		  -moz-filter: blur(1.5px);
+		  -o-filter: blur(1.5px);
+		  -ms-filter: blur(1.5px);
+		  filter: blur(1.5px);
+		}
+	}
+	.header-title {
+		line-height: 60px;
+		width: 100%;
+		text-align: center;
+		font-size: 2em;
+		color: #fff;
+	}
+	.create-btn {
+		width: 75px;
+		height: 75px;
+		z-index: 2;
+		position: absolute;
+		right: 30px;
+		bottom: -37.5px;
+		background: #fff;
+		border: 1px outset rgba(112, 204, 114, 0.7);
+		border-radius: 50%;
+		&.return {
+			i {
+				margin-left: 18px;
+			}
+		}
+		i {
+			color: #70CC72;
+			font-size: 3em;
+			line-height: 75px;
+			width: 50px;
+			margin-left: 21.75px;
+
+		}
+	}
 }

@@ -116,8 +116,8 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
 
   .state('chats', {
       url: '/chats',
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+      templateUrl: 'templates/tab-chats.html',
+      controller: 'ChatsCtrl'
 
     })
     .state('tab.chat-detail', {

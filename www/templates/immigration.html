@@ -38,15 +38,63 @@
       <div class="list">
         <label class="item item-input item-floating-label">
           <span class="input-label">Full Name:</span>
-          <input type="text" placeholder="{{data.user_info.name}}" ng-model="data.user_info.name">
+          <input type="text" placeholder="{{data.user_info.name || 'Full Name'}}" ng-model="data.user_info.name">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Nationality:</span>
-          <input type="text" placeholder="{{data.user_info.nationality}}" ng-model="data.user_info.nationality">
+          <input type="text" placeholder="{{data.user_info.nationality || 'nationality'}}" ng-model="data.user_info.nationality">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Date of Birth:</span>
-          <input type="text" placeholder="{{data.user_info.date_of_birth}}" ng-model="data.user_info.date_of_birth">
+          <input type="text" placeholder="{{data.user_info.date_of_birth || 'Date of Birth'}}" ng-model="data.user_info.date_of_birth">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Passport Number:</span>
+          <input type="text" placeholder="{{data.user_info.passport_number || 'Passport Number'}}" ng-model="data.user_info.passport_number">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Visa Number:</span>
+          <input type="text" placeholder="{{data.user_info.visa_number || 'Visa Number'}}" ng-model="data.user_info.visa_number">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Gender:</span>
+          <input type="text" placeholder="{{data.user_info.gender || 'Gender'}}" ng-model="data.user_info.gender">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Address:</span>
+          <input type="text" placeholder="{{data.user_info.address || 'Address'}}" ng-model="data.user_info.address">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Flight Number To:</span>
+          <input type="text" placeholder="{{data.user_info.flight_number_to || 'Flight Number To'}}" ng-model="data.user_info.flight_number_to">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Foreign Address:</span>
+          <input type="text" placeholder="{{data.user_info.foreign_address || 'Foreign Address'}}" ng-model="data.user_info.foreign_address">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">From date:</span>
+          <input type="text" placeholder="{{data.user_info.from_date || 'From Date'}}" ng-model="data.user_info.from_date">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Destination:</span>
+          <input type="text" placeholder="{{data.user_info.destination || 'Destination'}}" ng-model="data.user_info.destination">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">To Date:</span>
+          <input type="text" placeholder="{{data.user_info.to_date || 'To Date'}}" ng-model="data.user_info.to_date">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Flight Number Back:</span>
+          <input type="text" placeholder="{{data.user_info.flight_number_back || 'Flight Number Back'}}" ng-model="data.user_info.flight_number_back">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Last Visit Country:</span>
+          <input type="text" placeholder="{{data.user_info.last_visit_country || 'Last Visit Country'}}" ng-model="data.user_info.last_visit_country">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Next Visit Country:</span>
+          <input type="text" placeholder="{{data.user_info.next_visit_country || 'Next Visit Country'}}" ng-model="data.user_info.next_visit_country">
         </label>
         <button class="button button-block button-outline button-dark" ng-class="{'disable': checkFinished()}" ng-click="submitForm()">Submit Immigration Paper</button>
       </div>

@@ -10309,6 +10309,7 @@ a.button {
   max-height: 250px;
   height: 250px;
   background: #669AE1;
+  -webkit-transition: height 1s;
   transition: height 1s; }
   .immigration-header-bar.closePanel {
     height: 60px; }
@@ -10332,8 +10333,10 @@ a.button {
     color: #fff;
     z-index: 2;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+    -webkit-transition: -webkit-transform 1s;
     transition: transform 1s; }
     .immigration-header-bar .title.header-title {
+      -webkit-transform: scale(1) translate(-10px, -150px);
       transform: scale(1) translate(-10px, -150px);
       position: relative;
       text-align: center !important;
@@ -10427,6 +10430,7 @@ a.button {
   max-height: 250px;
   height: 250px;
   background: #ffcc00;
+  -webkit-transition: height 1s;
   transition: height 1s; }
   .redemption-header-bar.closePanel {
     height: 60px; }
@@ -10450,8 +10454,10 @@ a.button {
     color: #fff;
     z-index: 2;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+    -webkit-transition: -webkit-transform 1s;
     transition: transform 1s; }
     .redemption-header-bar .title.header-title {
+      -webkit-transform: scale(1) translate(-10px, -150px);
       transform: scale(1) translate(-10px, -150px);
       position: relative;
       text-align: center !important;
@@ -10600,7 +10606,6 @@ img.profile-pic.right {
   right: 10px; }
 
 .ion-email {
-  float: right;
   font-size: 32px;
   vertical-align: middle; }
 
@@ -10722,3 +10727,90 @@ a.autolinker {
 
 .loader .ion-loading-c {
   font-size: 64px; }
+
+/* Chatroom */
+.chatroom-header-bar {
+  max-height: 250px;
+  height: 250px;
+  background: #70CC72;
+  -webkit-transition: height 1s;
+  transition: height 1s; }
+  .chatroom-header-bar.closePanel {
+    height: 60px; }
+  .chatroom-header-bar .buttons {
+    height: 30px;
+    position: absolute; }
+    .chatroom-header-bar .buttons .button {
+      margin: 10px;
+      background: transparent; }
+      .chatroom-header-bar .buttons .button i {
+        font-size: 2em;
+        color: #fff; }
+  .chatroom-header-bar .title {
+    font-size: 3em;
+    line-height: 2em;
+    text-align: left !important;
+    width: 100%;
+    height: 2em;
+    top: 150px;
+    left: 10px !important;
+    color: #fff;
+    z-index: 2;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+    -webkit-transition: -webkit-transform 1s;
+    transition: transform 1s; }
+    .chatroom-header-bar .title.header-title {
+      -webkit-transform: scale(1) translate(-10px, -150px);
+      transform: scale(1) translate(-10px, -150px);
+      position: relative;
+      text-align: center !important;
+      text-shadow: none; }
+  .chatroom-header-bar .description {
+    font-size: 2em;
+    line-height: 1.3em;
+    color: #fff;
+    text-align: right;
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    width: 200px;
+    margin: 5px 0px; }
+  .chatroom-header-bar .chatroom-icon {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 30px;
+    bottom: 30px; }
+    .chatroom-header-bar .chatroom-icon img {
+      width: 100%;
+      height: auto;
+      opacity: 0.8;
+      -webkit-filter: blur(1.5px);
+      -moz-filter: blur(1.5px);
+      -o-filter: blur(1.5px);
+      -ms-filter: blur(1.5px);
+      filter: blur(1.5px); }
+  .chatroom-header-bar .header-title {
+    line-height: 60px;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    color: #fff; }
+  .chatroom-header-bar .create-btn {
+    width: 75px;
+    height: 75px;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    bottom: -37.5px;
+    background: #fff;
+    border: 1px outset rgba(112, 204, 114, 0.7);
+    border-radius: 50%; }
+    .chatroom-header-bar .create-btn.return i {
+      margin-left: 18px; }
+    .chatroom-header-bar .create-btn i {
+      color: #70CC72;
+      font-size: 3em;
+      line-height: 75px;
+      width: 50px;
+      margin-left: 21.75px; }
