@@ -9865,13 +9865,36 @@ a.button {
   height: 50px;
   font-family: 'Lobster', cursive;
   font-weight: 500;
-  animation: type 1.5s steps(60, end);
   white-space: nowrap;
+  animation: type 1.5s steps(60, end);
+  overflow: hidden; }
+
+.app-message {
+  text-align: center;
+  width: 200px;
+  margin: 0 auto;
+  position: relative;
+  top: 40px;
+  font-size: 2em;
+  line-height: 2em;
+  height: 50px;
+  font-family: 'Lobster', cursive;
+  font-weight: 500;
+  white-space: nowrap;
+  animation: type 1.5s steps(60, end);
   overflow: hidden; }
 
 @keyframes type {
   from {
     width: 0; } }
+
+@keyframes type2 {
+  0% {
+    width: 0; }
+  50% {
+    width: 0; }
+  100% {
+    width: 100; } }
 
 .search-body {
   height: 100%; }
@@ -9889,8 +9912,8 @@ a.button {
       height: 90px;
       width: 90px;
       border-radius: 50%;
-      border: solid 0px #333;
-      background: url(../img/icon.png);
+      border: solid 2px #333;
+      background: url(http://gravatar.com/avatar/c39520deb8a1d3541ce9c18aa51b0a67?s=512);
       background-size: 90px 90px;
       background-repeat: no-repeat;
       z-index: 9999;
@@ -10398,20 +10421,22 @@ a.button {
 .immigration {
   height: 100%;
   background: #fff; }
-  .immigration .list .item {
-    padding: 0 0 5px 16px; }
-    .immigration .list .item .input-label {
-      line-height: 20px; }
-    .immigration .list .item input {
-      height: 25px; }
-  .immigration .list .button-block {
-    width: 80%;
-    margin: 10px auto;
-    color: #333;
-    font-weight: 500; }
-    .immigration .list .button-block.disable {
-      color: rgba(51, 51, 51, 0.7);
-      border: 1px solid rgba(51, 51, 51, 0.7); }
+  .immigration .list {
+    background-color: #f4f4f4; }
+    .immigration .list .item {
+      padding: 0 0 5px 16px; }
+      .immigration .list .item .input-label {
+        line-height: 20px; }
+      .immigration .list .item input {
+        height: 25px; }
+    .immigration .list .button-block {
+      width: 80%;
+      margin: 10px auto;
+      color: #333;
+      font-weight: 500; }
+      .immigration .list .button-block.disable {
+        color: rgba(51, 51, 51, 0.7);
+        border: 1px solid rgba(51, 51, 51, 0.7); }
 
 .qr-code-modal {
   background: rgba(155, 155, 155, 0.5);

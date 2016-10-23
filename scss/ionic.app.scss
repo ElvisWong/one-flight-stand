@@ -80,8 +80,34 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	// text-shadow: 1px 1px 1px rgba(255, 171, 145, 0.5);
 	font-family: 'Lobster', cursive;
 	font-weight: 500;
-	animation: type 1.5s steps(60, end);
 	white-space: nowrap;
+	animation: type 1.5s steps(60, end);
+	overflow: hidden;
+	// span {
+	// 	&:nth-child(1) {
+	// 		animation: type 1.5s steps(60, end);
+	// 	}
+	// 	&:nth-child(2) {
+	// 	  animation: type2 3s steps(60, end);
+	// 	}
+	// }
+}
+
+.app-message {
+	text-align: center;
+	width: 200px;
+	margin: 0 auto;
+	position: relative;
+	top: 40px;
+	font-size: 2em;
+	line-height: 2em;
+	height: 50px;
+	// color: rgba(255,87,34, 0.5);
+	// text-shadow: 1px 1px 1px rgba(255, 171, 145, 0.5);
+	font-family: 'Lobster', cursive;
+	font-weight: 500;
+	white-space: nowrap;
+	animation: type 1.5s steps(60, end);
 	overflow: hidden;
 }
 
@@ -89,6 +115,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   from { width: 0; }
 }
 
+@keyframes type2{
+  0%{width: 0;}
+  50%{width: 0;}
+  100%{ width: 100; }
+}
 
 .search-body {
   height: 100%;
@@ -716,7 +747,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	height: 100%;
 	background: #fff;
 	.list {
-        background-color: #f4f4f4
+      background-color: #f4f4f4;
 		.item {
 			padding: 0 0 5px 16px;
 			.input-label {
