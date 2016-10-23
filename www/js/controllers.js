@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
   // variables
   $scope.isBluetoothConnected = false;
   $scope.isMenuOpen = false;
-  $scope.user = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
+  $scope.user = {email: 'cathay_pacific@gmail.com', password: '123456'};
   $scope.newUser = {email: 'cykwongaa@connect.ust.hk', password: '123456'};
   $scope.currentUser = {};
 
@@ -27,6 +27,7 @@ angular.module('starter.controllers', [])
   $scope.showLogin = true;
   $scope.isLogin = false;
   $scope.modalTitle = "Login";
+  $scope.country_list = [];
 
   // bluetoothSerial.available(function() {
   //   bluetoothSerial.enable(function() {
@@ -63,17 +64,17 @@ angular.module('starter.controllers', [])
   };
 
   $scope.login = function() {
-    console.log('$scope.login()');
+    //console.log('$scope.login()');
     $scope.api_call = new System.login();
 
     $scope.params = $scope.user;
 
-    console.log($scope.params);
+    //console.log($scope.params);
 
     System.showLoading();
     $scope.api_call.save($scope.params, function(response){
         System.hideLoading();
-        console.log(response);
+        //console.log(response);
         UserService.setUser(response);
         $scope.currentUser = response;
         System.setLogin();
@@ -83,7 +84,7 @@ angular.module('starter.controllers', [])
   };
 
   $scope.signUp = function() {
-    console.log('$scope.signup()');
+    //console.log('$scope.signup()');
     $scope.api_call = new System.register();
 
     $scope.params = $scope.newUser;
@@ -91,10 +92,16 @@ angular.module('starter.controllers', [])
     System.showLoading();
     $scope.api_call.save($scope.params, function(response){
         System.hideLoading();
-        console.log(response);
+        //console.log(response);
         UserService.setUser(response);
         $scope.user = $scope.newUser;
         $scope.login();
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Confirm',
+            template: 'User is registered!'
+        }).then(function(res) {
+
+        });
     });
   };
 
@@ -105,12 +112,16 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ImmigrationCtrl', function($scope, TripService, UserService, System, $http, $ionicHistory, $ionicPopup, $ionicModal) {
+  $scope.from_date = "2016-11-10 12:00:00";
+  $scope.to_date = "2016-11-11 23:00:00";
+    
   $from_date = new Date("2016-11-10 12:00:00");
   $to_date = new Date("2016-11-11 23:00:00");
   $from_date = $from_date.getTime() / 1000;
   $to_date = $to_date.getTime() / 1000;
   
   $scope.data = {
+    "title": 'Family Trip',
     "access_token": null,
     "flight_number_to": 'CX121',
     "foreign_address": 'Thailand',
@@ -164,21 +175,22 @@ angular.module('starter.controllers', [])
     }
     else{
         $scope.trip.user_info = {};
-        console.log($scope.trip.user_info);
+        //console.log($scope.trip.user_info);
         var params = {
             method: 'POST',
             url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips',
             data: $scope.trip
         }
     }
-    console.log(params);
+    //console.log(params);
 
     $scope.isLoading = true;
     System.showLoading();
     $http(params).then(function(response){
+        console.log(response.data);
         TripService.setTrip(response.data);
-        console.log(response);
-        console.log(response.data.access_token);
+        //console.log(response);
+        //console.log(response.data.access_token);
         if($scope.isLogin)
             $scope.getTripList();
         else
@@ -186,9 +198,16 @@ angular.module('starter.controllers', [])
         System.hideLoading();
         $scope.isLoading = false;
         $scope.openForm = false;
-        $ionicHistory.goBack();
+        
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Confirm',
+            template: 'Trip Record is created!'
+        }).then(function(res) {
+
+        });
+        //$ionicHistory.goBack();
     }, function(response){
-        console.log(response);
+        //console.log(response);
     });
   }
 
@@ -204,19 +223,25 @@ angular.module('starter.controllers', [])
         },
     }
 
-    console.log(params);
+    //console.log(params);
       
     $scope.isLoading = true;
     System.showLoading();
     $http(params).then(function(response){
-        console.log('getTripList:');
-        console.log(response);
+        //console.log('getTripList:');
+        //console.log(response);
+        angular.forEach(response.data.results, function(data, index){
+            //console.log(data.create_time.substr(0, 10));
+            //console.log(data.create_time.substr(11, 8));
+            data.temp_create_time = data.create_time.substr(0, 10) + ' ' + data.create_time.substr(11, 8);
+            //console.log(data.temp_create_time);
+        })
         $scope.trip_list_data = response.data.results;
-        console.log($scope.trip_list_data);
+        //console.log($scope.trip_list_data);
         System.hideLoading();
         $scope.isLoading = false;
     }, function(response){
-        console.log(response);
+        //console.log(response);
     });
   }
   
@@ -234,13 +259,13 @@ angular.module('starter.controllers', [])
         }
     }
 
-    console.log(params);
+    //console.log(params);
       
     $http(params).then(function(response){
-        console.log(response);
+        //console.log(response);
         $scope.qrcode_string = response.data.id;
     }, function(response){
-        console.log(response);
+        //console.log(response);
     });
       
     //$scope.qrcode_string = 'http://cathay-pacific-146715.appspot.com/trips/' + data.uid + '?access_token=' + data.access_token;
@@ -322,7 +347,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.createForm = function() {
-    console.log("data: ", $scope.data);
+    //console.log("data: ", $scope.data);
     if ($scope.openForm) {
       $scope.destroyForm();
     } else
@@ -358,7 +383,7 @@ angular.module('starter.controllers', [])
     $ionicHistory.goBack();
   }
   $scope.createChat = function() {
-    console.log("create chat", $scope.openChat);
+    //console.log("create chat", $scope.openChat);
     $scope.openChat = !$scope.openChat;
   }
   
@@ -478,7 +503,7 @@ angular.module('starter.controllers', [])
     }
 
     $scope.$on('$ionicView.enter', function() {
-      console.log('UserMessages $ionicView.enter');
+      //console.log('UserMessages $ionicView.enter');
 
       getMessages();
 
@@ -494,7 +519,7 @@ angular.module('starter.controllers', [])
     });
 
     $scope.$on('$ionicView.leave', function() {
-      console.log('leaving UserMessages view, destroying interval');
+      //console.log('leaving UserMessages view, destroying interval');
       // Make sure that the interval is destroyed
       if (angular.isDefined(messageCheckTimer)) {
         $interval.cancel(messageCheckTimer);
@@ -522,7 +547,7 @@ angular.module('starter.controllers', [])
     }
 
     $scope.$watch('input.message', function(newValue, oldValue) {
-      console.log('input.message $watch, newValue ' + newValue);
+      //console.log('input.message $watch, newValue ' + newValue);
       if (!newValue) newValue = '';
       localStorage['userMessage-' + $scope.toUser._id] = newValue;
     });
@@ -544,9 +569,9 @@ angular.module('starter.controllers', [])
       message.username = $scope.user.username;
       message.userId = $scope.user._id;
       message.pic = $scope.user.picture;
-      console.log("message: ", message);
+      //console.log("message: ", message);
       $scope.messages.push(message);
-      console.log("$scope.message: ", $scope.message);
+      //console.log("$scope.message: ", $scope.message);
 
       $timeout(function() {
         viewScroll.scrollBottom(true);
@@ -562,8 +587,8 @@ angular.module('starter.controllers', [])
 
 
     $scope.onMessageHold = function(e, itemIndex, message) {
-      console.log('onMessageHold');
-      console.log('message: ' + JSON.stringify(message, null, 2));
+      //console.log('onMessageHold');
+      //console.log('message: ' + JSON.stringify(message, null, 2));
       $ionicActionSheet.show({
         buttons: [{
           text: 'Copy Text'
@@ -602,11 +627,11 @@ angular.module('starter.controllers', [])
 
     // I emit this event from the monospaced.elastic directive, read line 480
     $scope.$on('taResize', function(e, ta) {
-      console.log('taResize');
+      //console.log('taResize');
       if (!ta) return;
 
       var taHeight = ta[0].offsetHeight;
-      console.log('taHeight: ' + taHeight);
+      //console.log('taHeight: ' + taHeight);
 
       if (!footerBar) return;
 
@@ -660,7 +685,7 @@ angular.module('starter.controllers', [])
       'address': 'Hong Kong'
   };
 
-  console.log($scope.user);
+  //console.log($scope.user);
     
   $scope.goBack = function() {
     $ionicHistory.goBack();
@@ -676,14 +701,14 @@ angular.module('starter.controllers', [])
         data: $scope.updateUser
     };
 
-    console.log(params);
+    //console.log(params);
 
     $http(params).then(function(response){
-        console.log(response);
+        //console.log(response);
         UserService.setUser(response.data);
         $scope.user = response.data;
     }, function(response){
-        console.log(response);
+        //console.log(response);
     });
   }
 

@@ -19,9 +19,10 @@
     </ion-header-bar>
     <div class="immigration-record list" ng-show="!openForm">
       <a ng-show="trip_list_data.length > 0 && !isLoading" class="item item-avatar" href="#" ng-click="getTrip(data)" ng-repeat="data in trip_list_data">
-        <img src="../img/flags/48/Japan.png">
-        <h2>UID : {{data.uid}}</h2>
-        <p>Create Time : {{data.create_time}}</p>
+        <img ng-if="data.destination == 'JP' || data.destination == 'Tokyo/NRT'" src="../img/flags/48/Japan.png">
+        <img ng-if="data.destination == 'TH' || data.destination == 'Bangkok'" src="../img/flags/48/Thailand.png">
+        <h2>Title : {{data.title}}</h2>
+        <p>Create Time : {{data.temp_create_time}}</p>
         <p>{{data.destination}} Immigration - 10/9/2016</p>
       </a>
       <a ng-hide="trip_list_data.length > 0 || isLoading" class="item item-avatar" href="#">
@@ -47,6 +48,10 @@
     </div>
     <div class="immigration" ng-show="openForm">
       <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Title:</span>
+          <input type="text" placeholder="{{data.title || 'Full Name'}}" ng-model="data.title">
+        </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Full Name:</span>
           <input type="text" placeholder="{{data.user_info.name || 'Full Name'}}" ng-model="data.user_info.name">
@@ -93,11 +98,11 @@
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">From date:</span>
-          <input type="text" placeholder="{{data.from_date || 'From Date'}}" ng-model="data.from_date">
+          <input type="text" placeholder="{{from_date || 'From Date'}}" ng-model="from_date">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">To Date:</span>
-          <input type="text" placeholder="{{data.to_date || 'To Date'}}" ng-model="data.to_date">
+          <input type="text" placeholder="{{to_date || 'To Date'}}" ng-model="to_date">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Flight Number Back:</span>
@@ -111,7 +116,7 @@
           <span class="input-label">Next Visit Country:</span>
           <input type="text" placeholder="{{data.next_visit_country || 'Next Visit Country'}}" ng-model="data.next_visit_country">
         </label>
-        <button class="button button-block button-outline button-dark" ng-class="{'disable': checkFinished()}" ng-click="submitForm()">Submit Immigration Paper</button>
+        <button class="button button-block button-outline button-dark" ng-class="{'disable': checkFinished()}" ng-click="submitForm(); openForm = false">Submit Immigration Paper</button>
       </div>
     </div>
   </ion-content>
