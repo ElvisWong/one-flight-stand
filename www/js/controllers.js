@@ -106,26 +106,31 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ImmigrationCtrl', function($scope, TripService, UserService, System, $http, $ionicHistory, $ionicPopup, $ionicModal) {
+  $from_date = new Date("2016-11-10 12:00:00");
+  $to_date = new Date("2016-11-11 23:00:00");
+  $from_date = $from_date.getTime() / 1000;
+  $to_date = $to_date.getTime() / 1000;
+
   $scope.data = {
     "access_token": null,
-    "flight_number_to": null,
-    "foreign_address": null,
+    "flight_number_to": 'CX121',
+    "foreign_address": 'Thailand',
     "update_time": "2016-10-22T10:09:27.500811",
-    "user_info": null,
+    "user_info": UserService.getUser(),
     "create_time": "2016-10-22T10:09:27.500785",
-    "from_date": null,
-    "destination": null,
-    "to_date": null,
+    "destination": 'TH',
+    "from_date": $from_date,
+    "to_date": $to_date,
     "owner": 5629499534213120,
     "uid": 5891733057437696,
-    "flight_number_back": null,
-    "last_visit_country": null,
-    "next_visit_country": null
+    "flight_number_back": 'CX123',
+    "last_visit_country": 'HK',
+    "next_visit_country": 'TH'
   };
   $scope.openForm = false;
   $scope.isLoading = false;
   $scope.qrcode_string = 'www.acesobee.com';
-  $scope.size = 300;
+  $scope.size = 250;
   $scope.correctionLevel = '';
   $scope.typeNumber = 0;
   $scope.inputMode = '';
@@ -147,7 +152,7 @@ angular.module('starter.controllers', [])
 
     $scope.trip = $scope.data;
     if($scope.isLogin){
-        $scope.trip.user_info = UserService.getUser();
+        //$scope.trip.user_info = UserService.getUser();
 
         var params = {
             method: 'POST',
@@ -181,6 +186,8 @@ angular.module('starter.controllers', [])
             $scope.trip_list_data.push(response.data);
         System.hideLoading();
         $scope.isLoading = false;
+        $scope.openForm = false;
+        $ionicHistory.goBack();
     }, function(response){
         console.log(response);
     });
@@ -215,7 +222,29 @@ angular.module('starter.controllers', [])
   }
 
   $scope.getTrip = function (data) {
-    $scope.qrcode_string = 'http://cathay-pacific-146715.appspot.com/trips/' + data.uid + '?access_token=' + data.access_token;
+    $scope.temp_string = 'http://cathay-pacific-146715.appspot.com/trips/' + data.uid + '?access_token=' + data.access_token;
+
+    var params = {
+        method: 'POST',
+        url: 'https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyC4fJd2cD8r4sQfTh8CccyzyoFXDT80glg',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: {
+            'longUrl': $scope.temp_string
+        }
+    }
+
+    console.log(params);
+
+    $http(params).then(function(response){
+        console.log(response);
+        $scope.qrcode_string = response.data.id;
+    }, function(response){
+        console.log(response);
+    });
+
+    //$scope.qrcode_string = 'http://cathay-pacific-146715.appspot.com/trips/' + data.uid + '?access_token=' + data.access_token;
     $scope.openQRCode();
 /*
     var params = {
@@ -236,6 +265,10 @@ angular.module('starter.controllers', [])
 */
   };
 
+  $scope.openQRCodeLink = function () {
+      window.open($scope.qrcode_string);
+  }
+
   $ionicModal.fromTemplateUrl('templates/modal.html', {
     scope: $scope,
     animation: 'fade-out'
@@ -246,6 +279,10 @@ angular.module('starter.controllers', [])
   $scope.openQRCode = function() {
     $scope.modal.show();
   };
+
+  $scope.closeQRCode = function () {
+    $scope.modal.hide();
+  }
 
   $scope.checkFinished = function() {
     for(var key in $scope.data) {
@@ -263,7 +300,7 @@ angular.module('starter.controllers', [])
   };
 
   $scope.submitForm = function() {
-
+      $scope.setTrip();
   }
 
   $scope.goBack = function() {
@@ -315,7 +352,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('DashCtrl', function($scope, $ionicHistory, $state) {
+.controller('DashCtrl', function($scope, $ionicHistory, $state, $ionicTabsDelegate) {
   $scope.openChat = false;
 
   $scope.goBack = function() {
@@ -327,6 +364,10 @@ angular.module('starter.controllers', [])
   $scope.createChat = function() {
     console.log("create chat", $scope.openChat);
     $scope.openChat = !$scope.openChat;
+  }
+
+  $scope.switchTab = function(index){
+      $ionicTabsDelegate.select(index);
   }
 })
 

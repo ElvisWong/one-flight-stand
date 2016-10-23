@@ -9889,8 +9889,8 @@ a.button {
       height: 90px;
       width: 90px;
       border-radius: 50%;
-      border: solid 2px #333;
-      background: url(http://gravatar.com/avatar/c39520deb8a1d3541ce9c18aa51b0a67?s=512);
+      border: solid 0px #333;
+      background: url(../img/icon.png);
       background-size: 90px 90px;
       background-repeat: no-repeat;
       z-index: 9999;
