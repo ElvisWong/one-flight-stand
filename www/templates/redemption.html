@@ -17,10 +17,11 @@
         <i class="ion-pricetags" ng-if="openMall"></i>
       </div>
     </ion-header-bar>
-  <ion-content class="redemption-pane">
+  <ion-content>
     <div class="redemption" ng-show="!openMall">
       <div class="feature-container">
         <div class="feature-grid">
+          <div class="badge">Inflight</div>
           <img src="../img/redemption_1.jpg">
           <span class="grid-title">The Kowloon Hotel Loong Yat Heen, All-U-Can-Eat Dim Sum Brunch, 1 person (Monday – Friday)</span>
           <span class="price">
@@ -37,6 +38,7 @@
           </span>
         </div>
         <div class="feature-grid">
+          <div class="badge">Inflight</div>
           <img src="../img/redemption_3.jpg">
           <span class="grid-title">ARTĒ Square Mini Ring</span>
           <span class="price">
@@ -71,7 +73,36 @@
       </div>
     </div>
     <div class="redemption-mall" ng-show="openMall">
-
+      <div class="redemption-profile"></div>
+      <span class="price"><span class="asia-points">&nbsp;</span>8,800</span>
+      <div class="split-line"></div>
+      <div class="redemption-panel">
+        <div class="grid">
+          <i class="ion-ios-box"></i>
+          <span>Gift Center</span>
+        </div>
+        <div class="grid">
+          <i class="ion-ios-cart"></i>
+          <span>Shopping Cart</span>
+        </div>
+        <div class="grid">
+          <i class="ion-pricetag"></i>
+          <span>Feature Products</span>
+        </div>
+        <div class="grid">
+          <i class="ion-pie-graph"></i>
+          <span>Statistics</span>
+        </div>
+        <div class="grid">
+          <i class="ion-person"></i>
+          <span>Profile</span>
+        </div>
+        <div class="grid">
+          <i class="ion-gear-a"></i>
+          <span>Setting</span>
+        </div>
+      </div>
+      <div class="split-line reverse"></div>
     </div>
   </ion-content>
 </ion-view>
