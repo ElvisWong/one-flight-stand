@@ -9,8 +9,8 @@ angular.module('starter.controllers', [])
   $scope.currentUser = {};
 
   $scope.trip = {
-    "flight_number_to": null,
-    "foreign_address": null,
+    "flight_number_to": "CX 755",
+    "foreign_address": "アキタケン, アキタシ, ホドノ, 272-1097",
     "update_time": "2016-10-22T10:09:27.500811",
     "user_info": {},
     "create_time": "2016-10-22T10:09:27.500785",
@@ -76,6 +76,7 @@ angular.module('starter.controllers', [])
         console.log(response);
         UserService.setUser(response);
         $scope.currentUser = response;
+        $scope.trip.user_info = $scope.currentUser;
         System.setLogin();
         $scope.isLogin = true;
         $scope.modal.hide();
@@ -129,7 +130,7 @@ angular.module('starter.controllers', [])
   $scope.typeNumber = 0;
   $scope.inputMode = '';
   $scope.image = true;
-  
+
   $scope.trip_list_data = [];
   $scope.isLogin = System.getIsLogin();
 
@@ -143,7 +144,7 @@ angular.module('starter.controllers', [])
     if(!$scope.isLogin){
         return;
     }
-      
+
     $scope.trip = $scope.data;
     if($scope.isLogin){
         $scope.trip.user_info = UserService.getUser();
@@ -198,7 +199,7 @@ angular.module('starter.controllers', [])
     }
 
     console.log(params);
-      
+
     $scope.isLoading = true;
     System.showLoading();
     $http(params).then(function(response){
@@ -212,11 +213,11 @@ angular.module('starter.controllers', [])
         console.log(response);
     });
   }
-  
+
   $scope.getTrip = function (data) {
     $scope.qrcode_string = 'http://cathay-pacific-146715.appspot.com/trips/' + data.uid + '?access_token=' + data.access_token;
     $scope.openQRCode();
-/*    
+/*
     var params = {
         method: 'GET',
         url: 'http://cathay-pacific-146715.appspot.com/api/v1/trips/' + TripService.getTrip().uid + '?access_token=' + TripService.getTrip().access_token,
@@ -226,13 +227,13 @@ angular.module('starter.controllers', [])
     }
 
     console.log(params);
-      
+
     $http(params).then(function(response){
         console.log(response);
     }, function(response){
         console.log(response);
     });
-*/    
+*/
   };
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
@@ -314,11 +315,14 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('DashCtrl', function($scope, $ionicHistory) {
+.controller('DashCtrl', function($scope, $ionicHistory, $state) {
   $scope.openChat = false;
 
   $scope.goBack = function() {
     $ionicHistory.goBack();
+  }
+  $scope.viewChat = function() {
+    $state.go('chats');
   }
   $scope.createChat = function() {
     console.log("create chat", $scope.openChat);
@@ -620,11 +624,11 @@ angular.module('starter.controllers', [])
   };
 
   console.log($scope.user);
-    
+
   $scope.goBack = function() {
     $ionicHistory.goBack();
   }
-  
+
   $scope.update = function () {
     var params = {
         method: 'PUT',
