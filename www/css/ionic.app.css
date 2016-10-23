@@ -9878,6 +9878,7 @@ a.button {
   font-size: 2em;
   line-height: 2em;
   height: 50px;
+  color: #333;
   font-family: 'Lobster', cursive;
   font-weight: 500;
   white-space: nowrap;
@@ -9891,7 +9892,7 @@ a.button {
 .search-body {
   height: 100%; }
   .search-body .search-pings {
-    margin: auto;
+    margin: -50px auto auto;
     height: 1px;
     width: 1px;
     top: 50%;

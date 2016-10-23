@@ -102,6 +102,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	font-size: 2em;
 	line-height: 2em;
 	height: 50px;
+	color: #333;
 	// color: rgba(255,87,34, 0.5);
 	// text-shadow: 1px 1px 1px rgba(255, 171, 145, 0.5);
 	font-family: 'Lobster', cursive;
@@ -118,7 +119,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .search-body {
   height: 100%;
   .search-pings {
-    margin: auto;
+    margin: -50px auto auto;
     height:1px;
     width:1px;
     top: 50%;
