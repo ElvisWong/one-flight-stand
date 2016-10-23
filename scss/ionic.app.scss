@@ -115,12 +115,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   from { width: 0; }
 }
 
-@keyframes type2{
-  0%{width: 0;}
-  50%{width: 0;}
-  100%{ width: 100; }
-}
-
 .search-body {
   height: 100%;
   .search-pings {
